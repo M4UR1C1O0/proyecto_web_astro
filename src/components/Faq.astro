@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+
+const preguntas = (await getCollection('faq')).sort((a, b) => a.data.orden - b.data.orden);
+---
+
+<section id="faq">
+	<h2>Preguntas frecuentes</h2>
+	{
+		preguntas.map(({ data }) => (
+			<details>
+				<summary>{data.pregunta}</summary>
+				<p>{data.respuesta}</p>
+			</details>
+		))
+	}
+</section>

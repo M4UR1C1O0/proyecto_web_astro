@@ -1,35 +1,24 @@
-# Gradle files
-.gradle/
-build/
-.kotlin/
+# build output
+dist/
 
-# Local configuration file (sdk path, etc)
-local.properties
+# generated types
+.astro/
 
-# Log/OS Files
-*.log
+# dependencies
+node_modules/
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.aab
-*.apk
-output-metadata.json
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# IntelliJ
-*.iml
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+#.DS_Store
+
+# jetbrains setting folder
 .idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
-
-# Keystore files
-*.jks
-*.keystore
-
-# Google Services (e.g. APIs or Firebase)
-google-services.json
-
-# Android Profiling
-*.hprof

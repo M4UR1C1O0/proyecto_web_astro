@@ -1,0 +1,17 @@
+[
+	{
+		"id": "empresa-privada",
+		"titulo": "Empresa privada",
+		"descripcion": "Desarrollo y gestión de proyectos en empresas de distintos rubros."
+	},
+	{
+		"id": "sector-publico",
+		"titulo": "Sector público",
+		"descripcion": "Participación en organismos e instituciones del Estado."
+	},
+	{
+		"id": "emprendimiento",
+		"titulo": "Emprendimiento",
+		"descripcion": "Creación de empresas y servicios propios."
+	}
+]

@@ -1,0 +1,20 @@
+[
+	{
+		"id": "semestre-1",
+		"semestre": 1,
+		"asignaturas": [
+			{ "codigo": "MAT101", "nombre": "Matemática I", "creditos": 6 },
+			{ "codigo": "INF101", "nombre": "Introducción a la Programación", "creditos": 6 },
+			{ "codigo": "COM101", "nombre": "Comunicación Oral y Escrita", "creditos": 4 }
+		]
+	},
+	{
+		"id": "semestre-2",
+		"semestre": 2,
+		"asignaturas": [
+			{ "codigo": "MAT102", "nombre": "Matemática II", "creditos": 6 },
+			{ "codigo": "INF102", "nombre": "Estructuras de Datos", "creditos": 6 },
+			{ "codigo": "FIS101", "nombre": "Física General", "creditos": 5 }
+		]
+	}
+]

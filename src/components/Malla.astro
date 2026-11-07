@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+
+const semestres = (await getCollection('malla')).sort(
+	(a, b) => a.data.semestre - b.data.semestre,
+);
+---
+
+<section id="malla">
+	<h2>Malla curricular</h2>
+	<div class="grid">
+		{
+			semestres.map(({ data }) => (
+				<article>
+					<h3>Semestre {data.semestre}</h3>
+					<ul>
+						{data.asignaturas.map((a) => (
+							<li>
+								<strong>{a.codigo}</strong> {a.nombre} ({a.creditos} créditos)
+							</li>
+						))}
+					</ul>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 1rem;
+	}
+
+	article {
+		border: 1px solid #d0d7de;
+		border-radius: 8px;
+		padding: 1rem;
+	}
+</style>

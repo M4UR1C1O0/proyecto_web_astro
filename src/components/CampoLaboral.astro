@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+
+const areas = await getCollection('campo-laboral');
+---
+
+<section id="campo-laboral">
+	<h2>Campo laboral</h2>
+	<ul>
+		{
+			areas.map(({ data }) => (
+				<li>
+					<strong>{data.titulo}:</strong> {data.descripcion}
+				</li>
+			))
+		}
+	</ul>
+</section>

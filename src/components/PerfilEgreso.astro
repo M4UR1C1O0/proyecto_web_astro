@@ -1,0 +1,14 @@
+---
+const competencias = [
+	'Competencia 1 del perfil de egreso.',
+	'Competencia 2 del perfil de egreso.',
+	'Competencia 3 del perfil de egreso.',
+];
+---
+
+<section id="perfil-egreso">
+	<h2>Perfil de egreso</h2>
+	<ul>
+		{competencias.map((c) => <li>{c}</li>)}
+	</ul>
+</section>

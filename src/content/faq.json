@@ -1,0 +1,14 @@
+[
+	{
+		"id": "duracion",
+		"pregunta": "¿Cuánto dura la carrera?",
+		"respuesta": "La carrera tiene una duración de 10 semestres.",
+		"orden": 1
+	},
+	{
+		"id": "modalidad",
+		"pregunta": "¿Cuál es la modalidad de estudio?",
+		"respuesta": "Presencial, en jornada diurna.",
+		"orden": 2
+	}
+]
