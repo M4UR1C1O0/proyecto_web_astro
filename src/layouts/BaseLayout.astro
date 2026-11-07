@@ -1,10 +1,22 @@
 ---
 interface Props {
 	title: string;
-	description?: string;
+	description: string;
+	/** Imagen para compartir en redes (ruta dentro de public/, ej. "og.png"). Recomendado: 1200x630 px. */
+	image?: string;
+	imageAlt?: string;
 }
 
-const { title, description = 'Información de la carrera' } = Astro.props;
+const { title, description, image, imageAlt } = Astro.props;
+
+// Ruta base del sitio (ej. "/proyecto_web_astro/"), siempre terminada en "/".
+const base: string = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+// URL absoluta de esta página, usada como canónica y en og:url.
+const canonicalUrl: URL = new URL(Astro.url.pathname, Astro.site);
+
+// Open Graph exige URLs absolutas para la imagen.
+const imageUrl: URL | undefined = image ? new URL(`${base}${image}`, Astro.site) : undefined;
 ---
 
 <!doctype html>
@@ -12,11 +24,25 @@ const { title, description = 'Información de la carrera' } = Astro.props;
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content={description} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="sitemap" href={`${base}sitemap-index.xml`} />
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+		<link rel="icon" href={`${base}favicon.ico`} />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Open Graph (vista previa al compartir en redes sociales y mensajería) -->
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_CL" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		{imageUrl && <meta property="og:image" content={imageUrl} />}
+		{imageUrl && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+
+		<!-- Tarjeta para X/Twitter (usa los mismos datos de Open Graph) -->
+		<meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
 	</head>
 	<body>
 		<main>
