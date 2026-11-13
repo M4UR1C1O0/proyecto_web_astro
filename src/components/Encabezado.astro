@@ -21,12 +21,30 @@ const enlaces: Enlace[] = [
 	{ id: 'faq', texto: 'Preguntas' },
 	{ id: 'respaldo', texto: 'Respaldo' },
 ];
+
+const base: string = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+// Chip activo del menú en celular, sin JavaScript: se destaca el enlace de la sección a la que se saltó
+// (selector :target). Al cargar la página sin ancla, se destaca el primero.
+const cssChipActivo: string = `@media (max-width: 47.99rem) {
+	html:not(:has(:target)) .encabezado nav li:first-child a,
+	${enlaces.map((e) => `html:has(#${e.id}:target) .encabezado nav a[href="#${e.id}"]`).join(',\n\t')} {
+		background: var(--marino);
+		border-color: var(--marino);
+		color: #fff;
+	}
+}`;
 ---
 
 <header class="encabezado">
 	<div class="contenedor fila">
 		<a class="marca" href="#contenido" aria-label="Ir al inicio: Ingeniería en Informática UTEM">
-			<Logo />
+			<span class="marca-completa"><Logo /></span>
+			{/* Versión de celular: escudo con sigla (mismo dibujo oficial) y nombre de la carrera. */}
+			<span class="marca-compacta">
+				<img src={`${base}logos/logo-utem-compacto.svg`} alt="" width="30" height="44" decoding="async" />
+				<span>Ingeniería Informática</span>
+			</span>
 		</a>
 		<nav aria-label="Secciones de la página">
 			<ul>
@@ -43,6 +61,8 @@ const enlaces: Enlace[] = [
 	</div>
 </header>
 
+<style is:inline set:html={cssChipActivo}></style>
+
 <style>
 	.encabezado {
 		position: sticky;
@@ -58,6 +78,10 @@ const enlaces: Enlace[] = [
 		flex-wrap: wrap;
 		align-items: center;
 		column-gap: 1rem;
+	}
+
+	.marca-compacta {
+		display: none;
 	}
 
 	.marca {
@@ -122,6 +146,67 @@ const enlaces: Enlace[] = [
 
 		.postula {
 			display: none;
+		}
+	}
+
+	/* En celular y tablet vertical (menos de 768 px) el menú se muestra como "chips":
+	   botones redondeados de 44 px de alto (área táctil recomendada), en una fila que se desplaza
+	   hacia los lados. La fila llega hasta el borde derecho para que se note que continúa. */
+	@media (max-width: 47.99rem) {
+		.marca {
+			padding-right: 0;
+			text-decoration: none;
+		}
+
+		.marca-completa {
+			display: none;
+		}
+
+		.marca-compacta {
+			display: flex;
+			align-items: center;
+			gap: 0.625rem;
+			min-height: 60px;
+			color: var(--azul);
+			font-weight: 700;
+			font-size: 0.9375rem;
+		}
+
+		.marca-compacta img {
+			display: block;
+			width: auto;
+			height: 44px;
+		}
+
+		nav {
+			margin-right: -1rem;
+			scrollbar-width: none;
+		}
+
+		nav::-webkit-scrollbar {
+			display: none;
+		}
+
+		ul {
+			gap: 0.5rem;
+			/* Espacio alrededor para que el contorno de foco no se corte. */
+			padding: 0.5rem 1rem 0.75rem 0.25rem;
+		}
+
+		nav a {
+			display: inline-flex;
+			align-items: center;
+			min-height: 44px;
+			padding: 0 1rem;
+			border: 1px solid var(--borde);
+			border-radius: 999px;
+		}
+
+		nav a:hover,
+		nav a:focus-visible {
+			background: var(--marino);
+			border-color: var(--marino);
+			color: #fff;
 		}
 	}
 </style>

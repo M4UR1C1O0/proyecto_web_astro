@@ -26,6 +26,9 @@
 	--fondo: #ffffff;
 	/* Tinte claro del celeste de la Facultad de Ingeniería, para fondos alternos de las secciones. */
 	--fondo-alt: #e5f7fd;
+	/* Tinte intermedio del mismo celeste, para el recuadro destacado de la portada en celular
+	   (texto #1F2328 encima: contraste 9,6:1). */
+	--celeste-claro: #66d9ff;
 	--borde: #d0d7de;
 	--nota: #fff7e6;
 	--nota-borde: #b45309;
