@@ -1,0 +1,42 @@
+# Publica el sitio en GitHub Pages cada vez que se sube un cambio a la rama principal (main).
+# Pasos: instala dependencias, compila con Astro (si un dato no cumple su esquema, falla aquí y no se publica)
+# y sube la carpeta dist/ a GitHub Pages.
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Permite publicar a mano desde la pestaña "Actions" de GitHub.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Evita dos publicaciones al mismo tiempo.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+      - name: Instalar, compilar y preparar el sitio (acción oficial de Astro, Node 24)
+        uses: withastro/action@v3
+        with:
+          node-version: 24
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

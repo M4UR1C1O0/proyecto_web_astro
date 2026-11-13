@@ -10,5 +10,10 @@ export default defineConfig({
 	base: '/proyecto_web_astro',
 	// URLs siempre con "/" final, para que cada página tenga una sola dirección (evita duplicados en el sitemap).
 	trailingSlash: 'always',
+	// Incluye el CSS dentro del HTML: el navegador no espera un archivo extra antes de mostrar la página
+	// (mejora la métrica "First Contentful Paint" de Lighthouse; el CSS del sitio es pequeño).
+	build: {
+		inlineStylesheets: 'always',
+	},
 	integrations: [sitemap()],
 });
