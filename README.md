@@ -4,7 +4,7 @@ Página web de una sola vista que presenta la carrera de **Ingeniería en Inform
 
 > Proyecto académico de la asignatura EFE685 – Electivo de Computación Móvil (2026). No es un sitio oficial de la UTEM.
 
-- **Sitio publicado:** https://m4ur1c1o0.github.io/proyecto_web_astro/
+- **Sitio publicado:** https://proyecto-web-astro.vercel.app/
 - **Repositorio:** https://github.com/M4UR1C1O0/proyecto_web_astro
 - **Informe del proyecto:** [INFORME.md](INFORME.md)
 
@@ -12,7 +12,9 @@ Página web de una sola vista que presenta la carrera de **Ingeniería en Inform
 
 ## 1. ¿Dónde está publicada la página?
 
-En **https://m4ur1c1o0.github.io/proyecto_web_astro/**. Se publica sola: cada vez que se guarda un cambio en la rama `main` del repositorio, GitHub compila el sitio y lo actualiza en uno o dos minutos. El avance se ve en la pestaña **Actions** del repositorio.
+En **https://proyecto-web-astro.vercel.app/**, alojada en [Vercel](https://vercel.com/). Se publica sola: cada vez que se guarda un cambio en la rama `main` del repositorio, Vercel compila el sitio y lo actualiza en uno o dos minutos.
+
+Los cambios en otras ramas (por ejemplo `develop`) también se compilan, pero en una **dirección de vista previa** distinta, sin tocar la página principal. Así se puede revisar un cambio antes de publicarlo. El estado de cada publicación y su enlace aparecen junto al commit en GitHub (ícono ✓ o ✗) y en el panel de Vercel.
 
 ## 2. ¿Cómo actualizar la información? (sin programar)
 
@@ -50,7 +52,7 @@ Al publicar, el sitio **se niega a compilar** si un dato está incompleto. Así 
 - una ponderación no es un número entre 0 y 100;
 - una fecha no tiene el formato `AAAA-MM-DD`.
 
-Si la publicación falla, la pestaña **Actions** muestra un mensaje que indica qué archivo y qué campo revisar. Mientras tanto, la versión anterior del sitio sigue en línea.
+Si la publicación falla, aparece una ✗ junto al commit en GitHub; al abrirla se llega al registro de Vercel, que indica qué archivo y qué campo revisar. Mientras tanto, la versión anterior del sitio sigue en línea.
 
 ### Cómo agregar una fuente nueva
 
@@ -68,7 +70,7 @@ npm install
 npm run dev
 ```
 
-Abre `http://localhost:4321/proyecto_web_astro/` en el navegador. Los cambios en `src/content/` se ven al instante.
+Abre `http://localhost:4321/` en el navegador. Los cambios en `src/content/` se ven al instante.
 
 Otros comandos:
 
@@ -91,7 +93,7 @@ src/
   styles/global.css   # colores y estilos generales (Manual de identidad UTEM 2026)
 public/               # favicon, imagen para redes, robots.txt
 docs/                 # wireframes y evidencias de pruebas (Lighthouse, capturas)
-.github/workflows/    # publicación automática en GitHub Pages
+astro.config.mjs      # configuración: dirección pública del sitio, sitemap
 ```
 
 ## 5. Créditos

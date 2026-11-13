@@ -19,3 +19,9 @@
 - Se quita la franja superior del encabezado con el aviso «Proyecto académico… No es el sitio oficial de la UTEM». El aviso se mantiene en el pie de página y en el nombre del sitio para redes (`og:site_name`).
 - Capturas de responsivo (360, 768 y 1280 px) tomadas de nuevo con el diseño actual: sin desplazamiento horizontal en los tres anchos.
 - **Decisión del equipo:** se ocultan los recuadros «Interpretación del equipo» (interruptor `MOSTRAR` en `src/components/NotaEquipo.astro`). Los textos siguen en `src/content/*.json`. Las citas se muestran en formato discreto (sin la palabra «Fuente:» visible).
+
+## 2026-11-12 (noche)
+
+- La publicación pasa de GitHub Pages a **Vercel** (https://proyecto-web-astro.vercel.app/), para tener vistas previas de la rama `develop` sin tocar `main`.
+- Se quita `base: '/proyecto_web_astro'` de `astro.config.mjs` (Vercel publica en la raíz) y se actualiza la dirección del sitio en la configuración, `robots.txt`, README e INFORME.
+- Se elimina `.github/workflows/deploy.yml`, que publicaba en GitHub Pages.

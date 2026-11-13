@@ -7,7 +7,7 @@
 | **Docente** | Sebastián Salazar Molina |
 | **Integrantes** | Mauricio Herraz C. (RUT [completar]) · [Nombre completo integrante 2] (RUT [completar]) · [Nombre completo integrante 3] (RUT [completar]) |
 | **Fecha de entrega** | 13 de noviembre de 2026 |
-| **Sitio publicado** | https://m4ur1c1o0.github.io/proyecto_web_astro/ |
+| **Sitio publicado** | https://proyecto-web-astro.vercel.app/ |
 | **Repositorio** | https://github.com/M4UR1C1O0/proyecto_web_astro |
 
 > Las marcas **[completar]** indican información que solo el equipo puede aportar (nombres, RUT, resultados de la prueba con usuarios, reflexiones y aportes). No se rellenaron para no inventar datos.
@@ -312,7 +312,7 @@ Astro genera páginas HTML ya listas y, por defecto, no envía JavaScript al nav
 | Contenido (datos y textos) | `src/content/*.json` | Cualquier persona de la Escuela, sin programar |
 | Reglas del contenido (esquemas) | `src/content.config.ts` | Equipo técnico |
 | Presentación (componentes y estilos) | `src/components/`, `src/layouts/`, `src/styles/` | Equipo técnico |
-| Configuración y publicación | `astro.config.mjs`, `.github/workflows/deploy.yml` | Equipo técnico |
+| Configuración y publicación | `astro.config.mjs` y el proyecto en Vercel | Equipo técnico |
 
 Ningún componente tiene datos escritos a mano: los títulos, introducciones e interpretaciones también vienen de `secciones.json`.
 
@@ -407,7 +407,9 @@ Lighthouse marcó al comienzo Accesibilidad 96 por una cita del pie de página c
 
 ### Despliegue
 
-El sitio se publica en GitHub Pages mediante una acción automática (`.github/workflows/deploy.yml`). Cada cambio en la rama `main` compila el sitio y, si todos los datos cumplen sus esquemas, lo publica. Si un dato falla, la versión anterior sigue en línea. El trabajo diario se hace en la rama `develop`, y `main` queda como rama estable.
+El sitio se publica en Vercel, conectado al repositorio de GitHub. Cada cambio en la rama `main` compila el sitio y, si todos los datos cumplen sus esquemas, lo publica en la dirección principal. Si un dato falla, la versión anterior sigue en línea. El trabajo diario se hace en la rama `develop`, y `main` queda como rama estable.
+
+**Por qué Vercel y no GitHub Pages.** Partimos con GitHub Pages, que solo publica una rama. Vercel, además de publicar `main`, crea una **vista previa** con su propia dirección para cada cambio en otras ramas. Así el equipo puede revisar y compartir el sitio de `develop` antes de pasarlo a la rama estable, sin arriesgar la página principal. También publica el sitio en la raíz de su dominio, lo que simplifica las rutas.
 
 ## 5. Cómo actualizar la información
 
@@ -640,7 +642,7 @@ El equipo declara contar con autorización para usar el identificador gráfico d
 |---|---|
 | Quién autoriza | [completar: unidad o persona de la UTEM] |
 | Fecha y medio | [completar: por ejemplo, correo del dd-mm-2026] |
-| Alcance | [completar: uso del logo en el sitio académico publicado en GitHub Pages] |
+| Alcance | [completar: uso del logo en el sitio académico publicado en Vercel] |
 | Respaldo | [completar: el respaldo se guarda fuera del repositorio, disponible para el docente] |
 
 Archivos usados: `public/logos/logo-utem.svg` (archivo oficial publicado en utem.cl) y `public/logos/logo-utem-blanco.svg` (la misma figura calada en blanco, versión permitida por la sección 4.6 del manual F15).
