@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1100" viewBox="0 0 1280 1100" font-family="Arial, sans-serif" font-size="14">
+  <title>Wireframe de baja fidelidad, versión escritorio (1280 px)</title>
+  <style>.c{fill:#fff;stroke:#555;stroke-width:1.5}.g{fill:#e6e6e6;stroke:#555}.t{fill:#222}.s{fill:#666;font-size:12px}</style>
+  <rect width="1280" height="1100" fill="#fafafa"/>
+  <!-- Encabezado con nombre y menú completo -->
+  <rect class="g" x="0" y="0" width="1280" height="56"/>
+  <text class="t" x="80" y="34" font-weight="bold">Ingeniería en Informática UTEM</text>
+  <text class="t" x="380" y="34">La carrera · Perfil · Campo laboral · Plan de estudios · Admisión · Preguntas · Respaldo · Referencias</text>
+  <!-- Portada -->
+  <rect class="c" x="80" y="76" width="1120" height="300"/>
+  <text class="s" x="104" y="104">¿QUÉ ES LA CARRERA?</text>
+  <text class="t" x="104" y="140" font-size="32" font-weight="bold">Ingeniería en Informática</text>
+  <rect class="g" x="104" y="154" width="640" height="40"/><text class="s" x="112" y="178">Introducción + fuentes</text>
+  <rect class="g" x="104" y="206" width="150" height="34" rx="17"/><text class="t" x="128" y="228">Cómo postular</text>
+  <rect class="c" x="264" y="206" width="170" height="34" rx="17"/><text class="t" x="286" y="228">Dónde trabajarás</text>
+  <rect class="g" x="104" y="254" width="200" height="50"/><text class="s" x="112" y="274">Título</text>
+  <rect class="g" x="318" y="254" width="200" height="50"/><text class="s" x="326" y="274">Grado</text>
+  <rect class="g" x="532" y="254" width="200" height="50"/><text class="s" x="540" y="274">Duración</text>
+  <rect class="g" x="746" y="254" width="200" height="50"/><text class="s" x="754" y="274">Jornada</text>
+  <rect class="g" x="960" y="254" width="216" height="50"/><text class="s" x="968" y="274">Lugar</text>
+  <rect class="g" x="104" y="314" width="350" height="50"/><text class="s" x="112" y="334">Empleabilidad 1.er año</text>
+  <rect class="g" x="464" y="314" width="350" height="50"/><text class="s" x="472" y="334">Acreditación universidad</text>
+  <rect class="g" x="824" y="314" width="352" height="50"/><text class="s" x="832" y="334">Certificación carrera</text>
+  <!-- Sobre la carrera -->
+  <rect class="c" x="80" y="392" width="1120" height="140"/>
+  <text class="t" x="104" y="420" font-weight="bold">Sobre la carrera</text>
+  <rect class="g" x="104" y="430" width="1072" height="60"/><text class="s" x="112" y="452">Tabla: carrera · duración · grado · enfoque (esta carrera + 2 afines)</text>
+  <rect x="104" y="498" width="1072" height="24" fill="#fff3d6" stroke="#b45309"/><text class="s" x="112" y="515">Interpretación del equipo</text>
+  <!-- Perfil y campo laboral -->
+  <rect class="c" x="80" y="548" width="1120" height="110"/>
+  <text class="t" x="104" y="576" font-weight="bold">Perfil de egreso</text>
+  <rect class="g" x="104" y="586" width="340" height="60"/><rect class="g" x="460" y="586" width="340" height="60"/><rect class="g" x="816" y="586" width="360" height="60"/>
+  <text class="s" x="112" y="606">Competencia 1</text><text class="s" x="468" y="606">Competencia 2</text><text class="s" x="824" y="606">Competencia 3 …</text>
+  <rect class="c" x="80" y="674" width="1120" height="110"/>
+  <text class="t" x="104" y="702" font-weight="bold">Campo laboral</text>
+  <rect class="g" x="104" y="712" width="340" height="60"/><rect class="g" x="460" y="712" width="340" height="60"/><rect class="g" x="816" y="712" width="360" height="60"/>
+  <text class="s" x="112" y="732">Empleabilidad 1.er año</text><text class="s" x="468" y="732">Empleabilidad 2.° año</text><text class="s" x="824" y="732">Ingreso 4.° año</text>
+  <!-- Plan de estudios -->
+  <rect class="c" x="80" y="800" width="1120" height="130"/>
+  <text class="t" x="104" y="828" font-weight="bold">Plan de estudios</text>
+  <text class="s" x="104" y="850">[Todos] [1.er año] [2.° año] [3.er año] [4.° año]  ← isla: filtro por año</text>
+  <rect class="g" x="104" y="860" width="255" height="60"/><rect class="g" x="375" y="860" width="255" height="60"/><rect class="g" x="646" y="860" width="255" height="60"/><rect class="g" x="917" y="860" width="259" height="60"/>
+  <!-- Admisión -->
+  <rect class="c" x="80" y="946" width="1120" height="100"/>
+  <text class="t" x="104" y="974" font-weight="bold">Admisión, costos y financiamiento</text>
+  <rect class="g" x="104" y="984" width="520" height="52"/><text class="s" x="112" y="1004">Tabla de ponderaciones</text>
+  <rect class="g" x="640" y="984" width="536" height="52"/><text class="s" x="648" y="1004">Fechas clave (línea de tiempo)</text>
+  <text class="s" x="80" y="1070">Luego: Preguntas frecuentes · Respaldo institucional · Referencias · Pie de página</text>
+</svg>

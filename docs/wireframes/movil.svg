@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="1500" viewBox="0 0 360 1500" font-family="Arial, sans-serif" font-size="12">
+  <title>Wireframe de baja fidelidad, versión móvil (360 px)</title>
+  <style>.c{fill:#fff;stroke:#555;stroke-width:1.5}.g{fill:#e6e6e6;stroke:#555}.t{fill:#222}.s{fill:#666;font-size:10px}</style>
+  <rect width="360" height="1500" fill="#fafafa"/>
+  <!-- Menú fijo con desplazamiento horizontal -->
+  <rect class="g" x="0" y="0" width="360" height="44"/>
+  <text class="t" x="12" y="27">La carrera · Perfil · Campo laboral · Plan →</text>
+  <!-- Portada -->
+  <rect class="c" x="12" y="56" width="336" height="330"/>
+  <text class="s" x="24" y="76">¿QUÉ ES LA CARRERA?</text>
+  <text class="t" x="24" y="100" font-size="20" font-weight="bold">Ingeniería en Informática</text>
+  <rect class="g" x="24" y="112" width="300" height="34"/><text class="s" x="30" y="133">Introducción + fuentes</text>
+  <rect class="g" x="24" y="156" width="130" height="30" rx="15"/><text class="t" x="44" y="176">Cómo postular</text>
+  <rect class="c" x="164" y="156" width="140" height="30" rx="15"/><text class="t" x="180" y="176">Dónde trabajarás</text>
+  <rect class="g" x="24" y="196" width="148" height="54"/><text class="s" x="30" y="215">Título</text>
+  <rect class="g" x="188" y="196" width="148" height="54"/><text class="s" x="194" y="215">Grado</text>
+  <rect class="g" x="24" y="258" width="148" height="54"/><text class="s" x="30" y="277">Duración</text>
+  <rect class="g" x="188" y="258" width="148" height="54"/><text class="s" x="194" y="277">Jornada</text>
+  <rect class="g" x="24" y="320" width="312" height="56"/><text class="s" x="30" y="340">Empleabilidad · Acreditación · Certificación (una por fila)</text>
+  <!-- Sobre la carrera -->
+  <rect class="c" x="12" y="398" width="336" height="150"/>
+  <text class="t" x="24" y="422" font-weight="bold">Sobre la carrera</text>
+  <rect class="g" x="24" y="432" width="312" height="70"/><text class="s" x="30" y="452">Tabla comparativa (desplazable) con 2 carreras afines</text>
+  <rect x="24" y="510" width="312" height="28" fill="#fff3d6" stroke="#b45309"/><text class="s" x="30" y="528">Interpretación del equipo</text>
+  <!-- Perfil -->
+  <rect class="c" x="12" y="560" width="336" height="140"/>
+  <text class="t" x="24" y="584" font-weight="bold">Perfil de egreso</text>
+  <rect class="g" x="24" y="594" width="312" height="30"/><text class="s" x="30" y="613">1. Competencia en lenguaje claro ▸ texto oficial</text>
+  <rect class="g" x="24" y="630" width="312" height="30"/><text class="s" x="30" y="649">2. …</text>
+  <rect class="g" x="24" y="666" width="312" height="26"/><text class="s" x="30" y="683">5. …</text>
+  <!-- Campo laboral -->
+  <rect class="c" x="12" y="712" width="336" height="160"/>
+  <text class="t" x="24" y="736" font-weight="bold">Campo laboral</text>
+  <rect class="g" x="24" y="746" width="312" height="50"/><text class="s" x="30" y="766">Empleabilidad 1.er y 2.° año · Ingreso 4.° año (con año)</text>
+  <rect class="g" x="24" y="804" width="312" height="58"/><text class="s" x="30" y="824">Áreas de desempeño</text>
+  <!-- Plan de estudios -->
+  <rect class="c" x="12" y="884" width="336" height="200"/>
+  <text class="t" x="24" y="908" font-weight="bold">Plan de estudios</text>
+  <rect class="g" x="24" y="918" width="312" height="40"/><text class="s" x="30" y="940">Cifras: duración, créditos SCT, retención</text>
+  <rect class="c" x="24" y="966" width="60" height="24" rx="12"/><text class="s" x="36" y="982">Todos</text>
+  <rect class="c" x="90" y="966" width="60" height="24" rx="12"/><text class="s" x="98" y="982">1.er año</text>
+  <rect class="c" x="156" y="966" width="60" height="24" rx="12"/><text class="s" x="164" y="982">2.° año</text>
+  <text class="s" x="224" y="982">… (isla)</text>
+  <rect class="g" x="24" y="998" width="312" height="76"/><text class="s" x="30" y="1018">Tarjetas por semestre</text>
+  <!-- Admisión -->
+  <rect class="c" x="12" y="1096" width="336" height="170"/>
+  <text class="t" x="24" y="1120" font-weight="bold">Admisión, costos y financiamiento</text>
+  <rect class="g" x="24" y="1130" width="312" height="40"/><text class="s" x="30" y="1152">Código, vacantes, puntaje mínimo, arancel</text>
+  <rect class="g" x="24" y="1178" width="312" height="36"/><text class="s" x="30" y="1198">Tabla de ponderaciones</text>
+  <rect class="g" x="24" y="1220" width="312" height="36"/><text class="s" x="30" y="1240">Línea de tiempo de fechas clave</text>
+  <!-- FAQ, respaldo, referencias -->
+  <rect class="c" x="12" y="1278" width="336" height="70"/>
+  <text class="t" x="24" y="1302" font-weight="bold">Preguntas frecuentes</text><text class="s" x="24" y="1322">▸ Pregunta (se despliega)</text>
+  <rect class="c" x="12" y="1358" width="336" height="60"/>
+  <text class="t" x="24" y="1382" font-weight="bold">Respaldo institucional</text>
+  <rect class="c" x="12" y="1428" width="336" height="40"/>
+  <text class="t" x="24" y="1452" font-weight="bold">Referencias (APA 7)</text>
+  <rect class="g" x="0" y="1478" width="360" height="22"/><text class="s" x="12" y="1493">Pie: proyecto académico · repositorio</text>
+</svg>
