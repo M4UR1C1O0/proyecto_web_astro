@@ -4,6 +4,10 @@
 		"titulo": "Ingeniería en Informática",
 		"pregunta": "¿Qué es la carrera?",
 		"intro": "Carrera de la Facultad de Ingeniería de la Universidad Tecnológica Metropolitana (UTEM). Forma profesionales «con sólida formación en ingeniería aplicada e informática».",
+		"destacado": {
+			"titulo": "¿Qué es la informática?",
+			"texto": "Está detrás de todo lo que usas a diario: tus apps, tus juegos, tus redes. Es el arte de hacer que la tecnología funcione… y de inventar lo que viene."
+		},
 		"fuentes": [
 			"F02",
 			"F01"

@@ -64,6 +64,9 @@ const secciones = defineCollection({
 		// Fuentes de la introducción, si contiene datos verificables.
 		fuentes: z.array(reference('referencias')).default([]),
 		notaEquipo,
+		// Recuadro destacado de la portada en celular. Es redacción del equipo (interpretación),
+		// no un dato tomado de una fuente: por eso no lleva cita.
+		destacado: z.object({ titulo: z.string().min(1), texto: z.string().min(1) }).optional(),
 	}),
 });
 
@@ -200,6 +203,8 @@ const imagenes = defineCollection({
 		licencia: z.string().min(1),
 		licenciaUrl: z.url(),
 		fuenteUrl: z.url(),
+		// Nombre del sitio de origen que se muestra en el crédito (ej. "Wikimedia Commons", "Archivo del equipo").
+		sitio: z.string().min(1).default('Wikimedia Commons'),
 		// Qué se modificó de la obra original (exigido por las licencias CC).
 		cambios: z.string().min(1),
 	}),

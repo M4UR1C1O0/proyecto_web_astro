@@ -32,7 +32,7 @@ if (!archivo) {
 	throw new Error(`Falta el archivo src/assets/${imagen.data.archivo}`);
 }
 
-const { alt, autor, licencia, licenciaUrl, fuenteUrl, cambios } = imagen.data;
+const { alt, autor, licencia, licenciaUrl, fuenteUrl, cambios, sitio } = imagen.data;
 ---
 
 <figure class="foto">
@@ -46,7 +46,7 @@ const { alt, autor, licencia, licenciaUrl, fuenteUrl, cambios } = imagen.data;
 		fetchpriority={loading === 'eager' ? 'high' : 'auto'}
 	/>
 	<figcaption>
-		Foto: {autor}, <a href={fuenteUrl}>Wikimedia Commons</a>, licencia{' '}
+		Foto: {autor}, <a href={fuenteUrl}>{sitio}</a>, licencia{' '}
 		<a href={licenciaUrl}>{licencia}</a>. {cambios}.
 	</figcaption>
 </figure>

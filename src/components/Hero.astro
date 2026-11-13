@@ -4,7 +4,7 @@
 //   - dos columnas: texto a la izquierda; foto con insignia flotante a la derecha;
 //   - debajo, una franja oscura con 4 cifras destacadas e íconos (lo que el público pidió primero).
 // Textos: secciones.json ("portada"). Cifras: cifras.json ("portada", "insignia", "franja"). Foto: imagenes.json.
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import Fuentes from './Fuentes.astro';
 import Cita from './Cita.astro';
 import Foto from './Foto.astro';
@@ -21,11 +21,34 @@ const ficha: CollectionEntry<'cifras'>[] = deSeccion('portada');
 const franja: CollectionEntry<'cifras'>[] = deSeccion('franja');
 const insignia: CollectionEntry<'cifras'> | undefined = deSeccion('insignia')[0];
 
+// Vista de celular (menos de 768 px): fondo blanco con trama decorativa, foto bajo el título y
+// recuadro destacado en celeste. El texto del recuadro está en secciones.json ("portada" > "destacado").
+const destacado = seccion.data.destacado;
+
+// Foto opcional solo para celular: si existe la imagen "portada-movil" en imagenes.json, reemplaza
+// a la foto de la Facultad en pantallas angostas. Si no existe, se usa la misma foto en todos los tamaños.
+const fotoMovil: CollectionEntry<'imagenes'> | undefined = await getEntry('imagenes', 'portada-movil');
+
 // El período "Consultado el …" se omite en la ficha: esa fecha ya aparece en Referencias.
 const mostrarPeriodo = (periodo: string): boolean => !periodo.startsWith('Consultado');
 ---
 
 <section class="hero" aria-labelledby="titulo-portada">
+	<!-- Trama decorativa de la vista de celular: pistas de circuito y símbolos de código.
+	     Son dibujos propios, no aportan información y quedan ocultos para lectores de pantalla. -->
+	<svg class="circuito arriba" viewBox="0 0 96 130" width="96" height="130" aria-hidden="true" focusable="false">
+		<g fill="none" stroke="currentColor" stroke-width="1.5">
+			<path d="M96 28H60v16H40" /><circle cx="36" cy="44" r="4" />
+			<path d="M96 78H80v26H66" /><circle cx="62" cy="104" r="4" />
+		</g>
+		<text x="46" y="128" font-size="15">&lt;/&gt;</text>
+	</svg>
+	<svg class="circuito abajo" viewBox="0 0 140 30" width="140" height="30" aria-hidden="true" focusable="false">
+		<g fill="none" stroke="currentColor" stroke-width="1.5">
+			<path d="M140 12H98v10H72" /><circle cx="68" cy="22" r="4" />
+		</g>
+		<text x="24" y="26" font-size="15">01</text>
+	</svg>
 	<div class="contenedor columnas">
 		<div class="texto">
 			<p class="etiqueta">{seccion.data.pregunta}</p>
@@ -33,9 +56,30 @@ const mostrarPeriodo = (periodo: string): boolean => !periodo.startsWith('Consul
 			{seccion.data.intro && <p class="bajada">{seccion.data.intro}</p>}
 			<Fuentes fuentes={seccion.data.fuentes} />
 
+			{
+				destacado && (
+					<p class="destacado">
+						<strong>{destacado.titulo}</strong>
+						{destacado.texto}
+					</p>
+				)
+			}
+
 			<div class="acciones">
 				<a class="boton" href="#admision">Cómo postular</a>
 				<a class="boton secundario" href="#plan-estudios">Ver la malla</a>
+				<svg class="circuito izquierda" viewBox="0 0 104 44" width="104" height="44" aria-hidden="true" focusable="false">
+					<g fill="none" stroke="currentColor" stroke-width="1.5">
+						<path d="M0 22h58v14h30" /><circle cx="92" cy="36" r="4" />
+					</g>
+					<text x="18" y="13" font-size="14">01</text>
+				</svg>
+				<svg class="circuito derecha" viewBox="0 0 104 44" width="104" height="44" aria-hidden="true" focusable="false">
+					<g fill="none" stroke="currentColor" stroke-width="1.5">
+						<path d="M104 14H50v18H18" /><circle cx="14" cy="32" r="4" />
+					</g>
+					<text x="68" y="42" font-size="14">//</text>
+				</svg>
 			</div>
 
 			<dl class="ficha">
@@ -62,7 +106,16 @@ const mostrarPeriodo = (periodo: string): boolean => !periodo.startsWith('Consul
 		</div>
 
 		<div class="imagen">
-			<Foto id="facultad-ingenieria" sizes="(min-width: 960px) 520px, 100vw" loading="eager" />
+			<div class:list={['marco', { 'foto-escritorio': fotoMovil }]}>
+				<Foto id="facultad-ingenieria" sizes="(min-width: 960px) 520px, 100vw" loading="eager" />
+			</div>
+			{
+				fotoMovil && (
+					<div class="marco foto-movil">
+						<Foto id="portada-movil" sizes="100vw" />
+					</div>
+				)
+			}
 			{
 				insignia && (
 					<div class="insignia">
@@ -285,6 +338,200 @@ const mostrarPeriodo = (periodo: string): boolean => !periodo.startsWith('Consul
 		color: var(--suave);
 		font-size: 0.75rem;
 		margin-top: 0.2rem;
+	}
+
+	/* ----- Vista de celular (menos de 768 px) -----
+	   Rediseño del 13-11-2026: fondo blanco con trama de puntos y circuitos, foto bajo el título,
+	   recuadro destacado en un tinte claro del celeste de la Facultad (F15 4.2), botones a todo el ancho y ficha en tarjetas.
+	   Desde 768 px la portada se ve igual que antes. */
+	.destacado,
+	.circuito,
+	.foto-movil {
+		display: none;
+	}
+
+	@media (max-width: 47.99rem) {
+		.hero {
+			position: relative;
+			overflow: hidden;
+			padding: 1.25rem 0 2.25rem;
+			background-color: var(--fondo);
+			/* Trama de puntos en azul institucional muy tenue (decorativa). */
+			background-image: radial-gradient(circle, rgba(0, 78, 170, 0.16) 1.1px, transparent 1.7px);
+			background-size: 20px 20px;
+		}
+
+		.circuito {
+			display: block;
+			position: absolute;
+			right: 0;
+			color: var(--azul);
+			fill: var(--azul);
+			opacity: 0.2;
+			font-family: ui-monospace, Consolas, 'Courier New', monospace;
+			font-weight: 700;
+			pointer-events: none;
+		}
+
+		.circuito.arriba {
+			top: 0;
+		}
+
+		.circuito.abajo {
+			bottom: 0;
+		}
+
+		/* Pistas a los lados del enlace "Ver la malla": llegan hasta el borde de la pantalla. */
+		.circuito.izquierda,
+		.circuito.derecha {
+			bottom: 0;
+		}
+
+		.circuito.izquierda {
+			left: -1rem;
+			right: auto;
+		}
+
+		.circuito.derecha {
+			right: -1rem;
+		}
+
+		/* Los hijos de .texto pasan a ser elementos de la grilla para poder intercalar la foto:
+		   etiqueta, título, foto, recuadro, botones, ficha y, al final, la bajada con su cita. */
+		.columnas {
+			position: relative;
+			gap: 1.125rem;
+			align-items: stretch;
+		}
+
+		.texto {
+			display: contents;
+		}
+
+		/* En celular el chip "La carrera" ya cumple el papel de la etiqueta, así que se oculta. */
+		.etiqueta {
+			display: none;
+		}
+
+		h1 {
+			order: 2;
+			margin: 0;
+			font-size: 2.5rem;
+			line-height: 1.08;
+		}
+
+		/* La foto va bajo el título; la insignia de certificación baja después de la ficha. */
+		.imagen {
+			display: contents;
+		}
+
+		.marco {
+			order: 3;
+		}
+
+		.destacado {
+			display: block;
+			order: 4;
+			margin: 0;
+			padding: 1.125rem;
+			border-radius: 16px;
+			background: var(--celeste-claro);
+			color: var(--texto);
+			line-height: 1.5;
+		}
+
+		.destacado strong {
+			display: block;
+		}
+
+		.acciones {
+			position: relative;
+			order: 5;
+			flex-direction: column;
+			gap: 0.25rem;
+			margin: 0;
+		}
+
+		.acciones .boton {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 52px;
+			text-align: center;
+		}
+
+		/* En celular el botón secundario se muestra como enlace, para dar más peso a "Cómo postular". */
+		.acciones .boton.secundario {
+			min-height: 44px;
+			border-color: transparent;
+			color: var(--azul);
+			text-decoration: underline;
+		}
+
+		.ficha {
+			order: 6;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 0.625rem;
+			border-top: 0;
+		}
+
+		.ficha div {
+			display: block;
+			padding: 0.75rem 0.875rem;
+			background: var(--fondo);
+			border: 1px solid var(--borde);
+			border-radius: 12px;
+		}
+
+		/* El título profesional ocupa todo el ancho; el resto va de a dos tarjetas por fila. */
+		.ficha div:first-child {
+			grid-column: 1 / -1;
+		}
+
+		.ficha dt {
+			font-size: 0.8rem;
+			color: var(--suave);
+		}
+
+		.ficha .valor {
+			display: block;
+			margin-right: 0;
+		}
+
+		.bajada {
+			order: 8;
+			margin: 0;
+			font-size: 1rem;
+		}
+
+		.texto :global(.fuente) {
+			order: 9;
+			margin-top: -0.75rem;
+		}
+
+		.imagen :global(img) {
+			aspect-ratio: 2 / 1;
+			border: 0;
+			border-radius: 16px;
+			box-shadow: none;
+		}
+
+		.foto-escritorio {
+			display: none;
+		}
+
+		.foto-movil {
+			display: block;
+		}
+
+		.insignia {
+			order: 7;
+			margin-top: 0;
+			max-width: none;
+			border: 1px solid var(--borde);
+			box-shadow: none;
+		}
 	}
 
 	/* ----- Franja de cifras ----- */
