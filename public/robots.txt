@@ -1,0 +1,5 @@
+# Permite que los buscadores indexen todo el sitio e indica dónde está el mapa del sitio.
+User-agent: *
+Allow: /
+
+Sitemap: https://m4ur1c1o0.github.io/proyecto_web_astro/sitemap-index.xml
