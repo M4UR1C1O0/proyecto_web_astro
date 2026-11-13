@@ -34,3 +34,4 @@
 - El recuadro es redacción del equipo (interpretación, sin cita) y se edita en `src/content/secciones.json` (`portada` > `destacado`). La bajada oficial con su cita (F02, F01) se mantiene, al final de la portada en celular.
 - Foto solo para celular (`portada-movil` en `imagenes.json`): laboratorio con visores de realidad virtual, de informatica.utem.cl. **Pendiente:** tiene todos los derechos reservados; falta la autorización de uso (ver INFORME) y reemplazar el archivo por el original en mejor resolución.
 - **Pendiente:** confirmar en el manual F15 el tamaño mínimo del escudo en su versión reducida.
+- Se vuelven a mostrar con su contenido las secciones «Campo laboral», «Plan de estudios», «Admisión» y «Preguntas frecuentes» (obligatorias según la Fase C). `SeccionVacia.astro` queda sin uso.
