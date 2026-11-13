@@ -1,0 +1,47 @@
+[
+	{
+		"id": "c1",
+		"competencia": "Crear soluciones informáticas con métodos y herramientas actuales.",
+		"textoOficial": "Como profesional UTEM desarrollarás soluciones informáticas mediante metodologías, técnicas y herramientas vigentes.",
+		"fuentes": [
+			"F02"
+		],
+		"orden": 1
+	},
+	{
+		"id": "c2",
+		"competencia": "Combinar tecnologías de software para resolver necesidades de una organización, cuidando la seguridad y la calidad.",
+		"textoOficial": "Integrarás tecnologías de software para satisfacer necesidades de la organización, considerando seguridad y calidad.",
+		"fuentes": [
+			"F02"
+		],
+		"orden": 2
+	},
+	{
+		"id": "c3",
+		"competencia": "Programar y diseñar productos de software que cumplan estándares.",
+		"textoOficial": "Utilizarás herramientas de programación, métodos de diseño de soluciones informáticas y diseñarás productos de software considerando estándares con criterios y eficiencia.",
+		"fuentes": [
+			"F02"
+		],
+		"orden": 3
+	},
+	{
+		"id": "c4",
+		"competencia": "Organizar redes informáticas para que los datos se comuniquen.",
+		"textoOficial": "Organizarás los recursos asociados a redes informáticas para establecer la comunicación de datos.",
+		"fuentes": [
+			"F02"
+		],
+		"orden": 4
+	},
+	{
+		"id": "c5",
+		"competencia": "Revisar si los equipos y sistemas tecnológicos de una organización rinden bien.",
+		"textoOficial": "Evaluar el desempeño de los recursos tecnológicos de un sistema computacional en una organización.",
+		"fuentes": [
+			"F02"
+		],
+		"orden": 5
+	}
+]

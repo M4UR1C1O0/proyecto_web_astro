@@ -1,0 +1,40 @@
+---
+// Respaldo institucional (Fase C, sección 8): acreditación vigente, cuerpo académico y laboratorios.
+// La acreditación de la universidad (CNA, F16) y la certificación de la carrera (F01) se muestran por separado.
+// Cifras: cifras.json (sección "respaldo"). Laboratorios: laboratorios.json.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import EncabezadoSeccion from './EncabezadoSeccion.astro';
+import ListaCifras from './ListaCifras.astro';
+import Fuentes from './Fuentes.astro';
+import NotaEquipo from './NotaEquipo.astro';
+import { obtenerSeccion } from '../lib/contenido';
+
+const seccion = await obtenerSeccion('respaldo');
+const laboratorios: CollectionEntry<'laboratorios'>[] = await getCollection('laboratorios');
+const fuentesLabs: { id: string }[] = laboratorios[0]?.data.fuentes ?? [];
+---
+
+<section id="respaldo" aria-labelledby="titulo-respaldo">
+	<div class="contenedor">
+		<EncabezadoSeccion seccion={seccion} idTitulo="titulo-respaldo" mostrarNota={false} />
+		<ListaCifras seccion="respaldo" />
+
+		<h3>Laboratorios del Departamento de Informática y Computación</h3>
+		<ul class="labs">
+			{laboratorios.map(({ data }) => <li>{data.nombre}</li>)}
+		</ul>
+		<Fuentes fuentes={fuentesLabs} />
+		{seccion.data.notaEquipo && <NotaEquipo texto={seccion.data.notaEquipo} />}
+	</div>
+</section>
+
+<style>
+	.labs {
+		padding-left: 1.2rem;
+		margin: 0;
+	}
+
+	.labs li {
+		margin-bottom: 0.35rem;
+	}
+</style>

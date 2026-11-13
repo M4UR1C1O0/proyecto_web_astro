@@ -1,0 +1,31 @@
+---
+// Citas de un dato, en formato discreto: solo la cita APA entre paréntesis, pequeña y en gris,
+// por ejemplo "Titulados 2021 a 2023 (Mineduc, s.f.-a)".
+// La palabra "Fuente:" no se ve, pero se mantiene para lectores de pantalla (clase solo-lector),
+// así la cita sigue siendo comprensible para quien no ve la página.
+import Cita from './Cita.astro';
+
+interface Props {
+	fuentes: { id: string }[];
+	/** Texto previo opcional, por ejemplo el período del dato. */
+	prefijo?: string;
+}
+
+const { fuentes, prefijo } = Astro.props;
+const etiqueta: string = fuentes.length > 1 ? 'Fuentes:' : 'Fuente:';
+---
+
+{
+	fuentes.length > 0 && (
+		<p class="fuente">
+			{prefijo && <>{prefijo} </>}
+			<span class="solo-lector">{etiqueta} </span>
+			{fuentes.map((f, i) => (
+				<>
+					{i > 0 && ' '}
+					<Cita id={f.id} />
+				</>
+			))}
+		</p>
+	)
+}

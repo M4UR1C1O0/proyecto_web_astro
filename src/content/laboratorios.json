@@ -1,0 +1,26 @@
+[
+	{
+		"id": "sistemas-complejos",
+		"nombre": "Laboratorio de Sistemas Complejos Impulsados por Datos",
+		"unidad": "Departamento de Informática y Computación",
+		"fuentes": [
+			"F22"
+		]
+	},
+	{
+		"id": "ia",
+		"nombre": "Laboratorio de investigación aplicada en IA",
+		"unidad": "Departamento de Informática y Computación",
+		"fuentes": [
+			"F22"
+		]
+	},
+	{
+		"id": "biomedicos",
+		"nombre": "Laboratorio Traslacional en Datos, Señales e imágenes biomédicas",
+		"unidad": "Departamento de Informática y Computación",
+		"fuentes": [
+			"F22"
+		]
+	}
+]

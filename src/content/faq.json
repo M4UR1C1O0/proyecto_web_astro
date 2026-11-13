@@ -1,14 +1,73 @@
 [
 	{
-		"id": "duracion",
-		"pregunta": "¿Cuánto dura la carrera?",
-		"respuesta": "La carrera tiene una duración de 10 semestres.",
-		"orden": 1
+		"id": "trabajo",
+		"pregunta": "¿Voy a encontrar trabajo cuando me titule?",
+		"respuesta": "Según Mi Futuro, el 87,1 % de quienes se titularon entre 2021 y 2023 tuvo ingresos sobre el sueldo mínimo en su primer año. Al segundo año, la cifra es 96,5 % (titulados 2020 a 2022).",
+		"orden": 1,
+		"fuentes": [
+			"F04",
+			"F17"
+		],
+		"notaEquipo": "Son promedios de varias generaciones. No garantizan un resultado individual."
 	},
 	{
-		"id": "modalidad",
-		"pregunta": "¿Cuál es la modalidad de estudio?",
-		"respuesta": "Presencial, en jornada diurna.",
-		"orden": 2
+		"id": "sueldo",
+		"pregunta": "¿Cuánto gana un ingeniero en informática?",
+		"respuesta": "Según Mi Futuro, al cuarto año de titulación el ingreso promedio bruto mensual está entre $2.200.000 y $2.300.000. Corresponde a titulados 2018 a 2020, en pesos de septiembre de 2025.",
+		"orden": 2,
+		"fuentes": [
+			"F04",
+			"F17"
+		]
+	},
+	{
+		"id": "programar",
+		"pregunta": "¿Necesito saber programar antes de entrar?",
+		"respuesta": "En el primer semestre se cursan Introducción a la Ingeniería en Informática y Algoritmos y Programación. También Taller de Matemática y Habilidades de Razonamiento Lógico.",
+		"orden": 3,
+		"fuentes": [
+			"F02"
+		],
+		"notaEquipo": "Como la malla parte con asignaturas introductorias, entendemos que no se exige saber programar antes. La fuente no lo dice de forma explícita."
+	},
+	{
+		"id": "matematica",
+		"pregunta": "¿Tiene mucha matemática?",
+		"respuesta": "La malla tiene seis asignaturas de matemática entre el primer y el cuarto semestre. Son Taller de Matemática, Calculo Diferencial, Algebra Clásica, Cálculo Integral, Algebra Superior y Estadística y Probabilidades. También incluye Mecánica Clásica y Electromagnetismo.",
+		"orden": 4,
+		"fuentes": [
+			"F02"
+		]
+	},
+	{
+		"id": "costo",
+		"pregunta": "¿Cuánto cuesta y qué becas o gratuidad hay?",
+		"respuesta": "El arancel anual 2026 es de $4.763.300 y la matrícula, de $90.000. La UTEM está adscrita a la gratuidad.",
+		"orden": 5,
+		"fuentes": [
+			"F07",
+			"F01",
+			"F02"
+		],
+		"notaEquipo": "Revisa si cumples los requisitos de gratuidad o becas en los beneficios oficiales del Ministerio de Educación."
+	},
+	{
+		"id": "trabajar",
+		"pregunta": "¿Puedo estudiar y trabajar al mismo tiempo?",
+		"respuesta": "La carrera se imparte en jornada diurna.",
+		"orden": 6,
+		"fuentes": [
+			"F01"
+		],
+		"notaEquipo": "Tenlo en cuenta si necesitas trabajar mientras estudias."
+	},
+	{
+		"id": "especializar",
+		"pregunta": "¿En qué me puedo especializar?",
+		"respuesta": "En el séptimo semestre hay dos electivos de formación especializada. El folleto no detalla sus contenidos.",
+		"orden": 7,
+		"fuentes": [
+			"F02"
+		]
 	}
 ]

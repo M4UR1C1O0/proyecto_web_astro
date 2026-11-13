@@ -1,0 +1,35 @@
+---
+// Texto redactado por el equipo, no tomado de una fuente ("Interpretación del equipo", Fase D).
+//
+// DESACTIVADO por decisión del equipo (12-11-2026): estos recuadros no se muestran en el sitio.
+// Los textos siguen guardados en src/content/*.json (campo "notaEquipo").
+// Para volver a mostrarlos, cambiar MOSTRAR a true. Ojo: la propuesta exige una "distinción visible
+// entre dato institucional e interpretación del equipo" y, en "Sobre la carrera", un análisis
+// propio identificado como interpretación del equipo.
+const MOSTRAR: boolean = false;
+
+interface Props {
+	texto: string;
+}
+
+const { texto } = Astro.props;
+---
+
+{
+	MOSTRAR && (
+		<p class="nota-equipo">
+			<strong>Interpretación del equipo:</strong> {texto}
+		</p>
+	)
+}
+
+<style>
+	.nota-equipo {
+		background: var(--nota);
+		border-left: 4px solid var(--nota-borde);
+		padding: 0.6rem 0.9rem;
+		margin: 1rem 0 0;
+		font-size: 0.95rem;
+		border-radius: 0 var(--radio) var(--radio) 0;
+	}
+</style>

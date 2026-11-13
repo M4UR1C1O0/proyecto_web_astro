@@ -1,0 +1,56 @@
+[
+	{
+		"id": "nem",
+		"prueba": "Notas de Enseñanza Media (NEM)",
+		"porcentaje": 10,
+		"fuentes": [
+			"F19"
+		],
+		"orden": 1
+	},
+	{
+		"id": "ranking",
+		"prueba": "Ranking de notas",
+		"porcentaje": 25,
+		"fuentes": [
+			"F19"
+		],
+		"orden": 2
+	},
+	{
+		"id": "lectora",
+		"prueba": "Competencia Lectora",
+		"porcentaje": 20,
+		"fuentes": [
+			"F19"
+		],
+		"orden": 3
+	},
+	{
+		"id": "m1",
+		"prueba": "Competencia Matemática 1 (M1)",
+		"porcentaje": 30,
+		"fuentes": [
+			"F19"
+		],
+		"orden": 4
+	},
+	{
+		"id": "electiva",
+		"prueba": "Historia y Ciencias Sociales, o Ciencias (una de las dos)",
+		"porcentaje": 10,
+		"fuentes": [
+			"F19"
+		],
+		"orden": 5
+	},
+	{
+		"id": "m2",
+		"prueba": "Competencia Matemática 2 (M2)",
+		"porcentaje": 5,
+		"fuentes": [
+			"F19"
+		],
+		"orden": 6
+	}
+]

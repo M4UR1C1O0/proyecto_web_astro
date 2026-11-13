@@ -1,0 +1,340 @@
+[
+	{
+		"id": "titulo",
+		"etiqueta": "Título profesional",
+		"valor": "Ingeniera/o en Informática",
+		"periodo": "Consultado el 12-11-2026",
+		"fuentes": [
+			"F01"
+		],
+		"secciones": [
+			"portada"
+		],
+		"orden": 1
+	},
+	{
+		"id": "grado",
+		"etiqueta": "Grado académico",
+		"valor": "Licenciada/o en Informática",
+		"periodo": "Consultado el 12-11-2026",
+		"fuentes": [
+			"F01"
+		],
+		"secciones": [
+			"portada"
+		],
+		"orden": 2
+	},
+	{
+		"id": "duracion-formal",
+		"etiqueta": "Duración",
+		"valor": "8 semestres",
+		"periodo": "Plan vigente desde 2022",
+		"fuentes": [
+			"F03"
+		],
+		"secciones": [
+			"portada",
+			"plan"
+		],
+		"orden": 3
+	},
+	{
+		"id": "jornada",
+		"etiqueta": "Jornada",
+		"valor": "Diurna",
+		"periodo": "Consultado el 12-11-2026",
+		"fuentes": [
+			"F01"
+		],
+		"secciones": [
+			"portada"
+		],
+		"orden": 4
+	},
+	{
+		"id": "campus",
+		"etiqueta": "Lugar",
+		"valor": "Campus Ñuñoa",
+		"periodo": "Admisión 2027",
+		"fuentes": [
+			"F19"
+		],
+		"secciones": [
+			"portada",
+			"admision"
+		],
+		"orden": 5
+	},
+	{
+		"id": "empleabilidad-1",
+		"etiqueta": "Empleabilidad al 1.er año",
+		"valor": "87,1 %",
+		"detalle": "Titulados con ingresos iguales o mayores al sueldo mínimo durante su primer año.",
+		"periodo": "Titulados 2021 a 2023 · Mi Futuro, proceso 2025-2026",
+		"fuentes": [
+			"F04",
+			"F17"
+		],
+		"secciones": [
+			"campo",
+			"franja"
+		],
+		"orden": 6,
+		"icono": "empleo",
+		"etiquetaCorta": "Empleabilidad al 1.er año"
+	},
+	{
+		"id": "acreditacion-institucional",
+		"etiqueta": "Acreditación de la universidad",
+		"valor": "Nivel Avanzado, 5 años",
+		"detalle": "Otorgada por la Comisión Nacional de Acreditación (CNA).",
+		"periodo": "Del 26-03-2026 al 26-03-2031",
+		"fuentes": [
+			"F16"
+		],
+		"secciones": [
+			"respaldo",
+			"franja"
+		],
+		"orden": 7,
+		"icono": "escudo",
+		"etiquetaCorta": "Acreditación UTEM (CNA)",
+		"valorCorto": "5 años, nivel Avanzado"
+	},
+	{
+		"id": "certificacion-carrera",
+		"etiqueta": "Certificación de la carrera",
+		"valor": "5 años",
+		"detalle": "Otorgada por la Agencia Acreditadora de Chile y por CONAIC (México).",
+		"periodo": "Del 16-06-2025 al 16-06-2030",
+		"fuentes": [
+			"F01"
+		],
+		"secciones": [
+			"respaldo",
+			"insignia"
+		],
+		"orden": 8,
+		"icono": "certificado",
+		"etiquetaCorta": "Carrera certificada"
+	},
+	{
+		"id": "empleabilidad-2",
+		"etiqueta": "Empleabilidad al 2.° año",
+		"valor": "96,5 %",
+		"detalle": "Titulados con ingresos iguales o mayores al sueldo mínimo durante su segundo año.",
+		"periodo": "Titulados 2020 a 2022 · Mi Futuro, proceso 2025-2026",
+		"fuentes": [
+			"F04",
+			"F17"
+		],
+		"secciones": [
+			"campo"
+		],
+		"orden": 9
+	},
+	{
+		"id": "ingreso-4",
+		"etiqueta": "Ingreso al 4.° año de titulación",
+		"valor": "$2.200.000 a $2.300.000",
+		"detalle": "Tramo del promedio bruto mensual, en pesos de septiembre de 2025.",
+		"periodo": "Titulados 2018 a 2020 · Mi Futuro, proceso 2025-2026",
+		"fuentes": [
+			"F04",
+			"F17"
+		],
+		"secciones": [
+			"campo",
+			"franja"
+		],
+		"orden": 10,
+		"icono": "dinero",
+		"etiquetaCorta": "Ingreso al 4.° año",
+		"valorCorto": "$2,2 a 2,3 millones"
+	},
+	{
+		"id": "creditos",
+		"etiqueta": "Créditos totales",
+		"valor": "240 SCT",
+		"periodo": "Plan vigente desde 2022",
+		"fuentes": [
+			"F03"
+		],
+		"secciones": [
+			"plan"
+		],
+		"orden": 11
+	},
+	{
+		"id": "retencion-1",
+		"etiqueta": "Retención de 1.er año",
+		"valor": "90,1 %",
+		"detalle": "Estudiantes de primer año 2024 que siguieron en la carrera en 2025.",
+		"periodo": "Cohorte 2024 · Mi Futuro, proceso 2025-2026",
+		"fuentes": [
+			"F04",
+			"F17"
+		],
+		"secciones": [
+			"plan"
+		],
+		"orden": 12
+	},
+	{
+		"id": "duracion-real",
+		"etiqueta": "Duración real promedio",
+		"valor": "12,9 semestres",
+		"detalle": "Semestres que tardaron en promedio quienes se titularon en 2024.",
+		"periodo": "Titulados 2024 · Mi Futuro, proceso 2025-2026",
+		"fuentes": [
+			"F04",
+			"F17"
+		],
+		"secciones": [
+			"plan"
+		],
+		"orden": 13
+	},
+	{
+		"id": "codigo",
+		"etiqueta": "Código para postular",
+		"valor": "21030",
+		"periodo": "Admisión 2027",
+		"fuentes": [
+			"F19"
+		],
+		"secciones": [
+			"admision"
+		],
+		"orden": 14
+	},
+	{
+		"id": "vacantes",
+		"etiqueta": "Vacantes",
+		"valor": "150 regulares",
+		"detalle": "Más cupos adicionales: 30 Más Mujeres Científicas (+MC), 5 Beca de Excelencia Académica (BEA) y 21 PACE.",
+		"periodo": "Admisión 2027",
+		"fuentes": [
+			"F19"
+		],
+		"secciones": [
+			"admision",
+			"franja"
+		],
+		"orden": 15,
+		"icono": "personas",
+		"etiquetaCorta": "Vacantes Admisión 2027",
+		"valorCorto": "150 regulares"
+	},
+	{
+		"id": "puntaje-minimo",
+		"etiqueta": "Puntaje mínimo de postulación",
+		"valor": "458 puntos",
+		"detalle": "Promedio mínimo entre Competencia Lectora y Competencia Matemática 1 (M1).",
+		"periodo": "Admisión 2027",
+		"fuentes": [
+			"F19"
+		],
+		"secciones": [
+			"admision"
+		],
+		"notaEquipo": "Es el mínimo para postular, no el puntaje del último seleccionado. Ese puntaje de corte no aparece en las fuentes oficiales revisadas.",
+		"orden": 16
+	},
+	{
+		"id": "otra-via",
+		"etiqueta": "Otra vía de ingreso",
+		"valor": "Acceso directo",
+		"detalle": "La UTEM la menciona en sus preguntas frecuentes de admisión.",
+		"periodo": "Consultado el 11-11-2026",
+		"fuentes": [
+			"F10"
+		],
+		"secciones": [
+			"admision"
+		],
+		"orden": 17
+	},
+	{
+		"id": "arancel",
+		"etiqueta": "Arancel anual",
+		"valor": "$4.763.300",
+		"periodo": "Año 2026",
+		"fuentes": [
+			"F07"
+		],
+		"secciones": [
+			"admision"
+		],
+		"orden": 18
+	},
+	{
+		"id": "matricula",
+		"etiqueta": "Matrícula",
+		"valor": "$90.000",
+		"periodo": "Sin año en la fuente; consultado el 12-11-2026",
+		"fuentes": [
+			"F01"
+		],
+		"secciones": [
+			"admision"
+		],
+		"orden": 19
+	},
+	{
+		"id": "gratuidad",
+		"etiqueta": "Gratuidad",
+		"valor": "Universidad adscrita",
+		"periodo": "Folleto 2026",
+		"fuentes": [
+			"F02"
+		],
+		"secciones": [
+			"admision"
+		],
+		"orden": 20
+	},
+	{
+		"id": "doctorado",
+		"etiqueta": "Académicos con doctorado",
+		"valor": "62 %",
+		"detalle": "Académicos de jornada completa con grado de doctor. Es un dato de toda la universidad, no solo de esta carrera.",
+		"periodo": "Año 2025",
+		"fuentes": [
+			"F05"
+		],
+		"secciones": [
+			"respaldo"
+		],
+		"orden": 21
+	},
+	{
+		"id": "correo-postulantes",
+		"etiqueta": "Correo para postulantes",
+		"valor": "postulantes@utem.cl",
+		"periodo": "Folleto 2026",
+		"fuentes": [
+			"F02"
+		],
+		"secciones": [
+			"contacto"
+		],
+		"icono": "correo",
+		"orden": 30
+	},
+	{
+		"id": "direccion",
+		"etiqueta": "Dirección",
+		"valor": "Campus Ñuñoa, Av. José Pedro Alessandri N.° 1242, Ñuñoa",
+		"periodo": "Folleto 2026",
+		"fuentes": [
+			"F02"
+		],
+		"secciones": [
+			"contacto"
+		],
+		"icono": "ubicacion",
+		"orden": 31
+	}
+]

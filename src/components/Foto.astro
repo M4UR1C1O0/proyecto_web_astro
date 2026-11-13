@@ -1,0 +1,73 @@
+---
+// Fotografía con licencia abierta y su crédito visible (autor, licencia y enlace a la obra original).
+// Los datos de cada imagen están en src/content/imagenes.json; el archivo, en src/assets/.
+// Astro la convierte a WebP/AVIF en varios tamaños, y el navegador descarga solo el que necesita.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { getEntry, type CollectionEntry } from 'astro:content';
+
+interface Props {
+	/** id de la imagen en imagenes.json. */
+	id: string;
+	/** Ancho que ocupará la imagen según la pantalla (atributo "sizes" de HTML). */
+	sizes: string;
+	/** "eager" para la imagen de la portada (se ve al cargar); "lazy" para el resto. */
+	loading?: 'eager' | 'lazy';
+}
+
+const { id, sizes, loading = 'lazy' } = Astro.props;
+
+const imagen: CollectionEntry<'imagenes'> | undefined = await getEntry('imagenes', id);
+if (!imagen) {
+	throw new Error(`La imagen "${id}" no existe en src/content/imagenes.json`);
+}
+
+// Todas las imágenes de src/assets/, indexadas por nombre de archivo.
+const archivos: Record<string, { default: ImageMetadata }> = import.meta.glob<{ default: ImageMetadata }>(
+	'../assets/*.{jpg,jpeg,png,webp}',
+	{ eager: true },
+);
+const archivo = archivos[`../assets/${imagen.data.archivo}`];
+if (!archivo) {
+	throw new Error(`Falta el archivo src/assets/${imagen.data.archivo}`);
+}
+
+const { alt, autor, licencia, licenciaUrl, fuenteUrl, cambios } = imagen.data;
+---
+
+<figure class="foto">
+	<Picture
+		src={archivo.default}
+		alt={alt}
+		formats={['avif', 'webp']}
+		widths={[480, 800, 1200]}
+		sizes={sizes}
+		loading={loading}
+		fetchpriority={loading === 'eager' ? 'high' : 'auto'}
+	/>
+	<figcaption>
+		Foto: {autor}, <a href={fuenteUrl}>Wikimedia Commons</a>, licencia{' '}
+		<a href={licenciaUrl}>{licencia}</a>. {cambios}.
+	</figcaption>
+</figure>
+
+<style>
+	.foto {
+		margin: 0;
+	}
+
+	.foto :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+		object-position: 40% 50%;
+		border-radius: 18px;
+	}
+
+	figcaption {
+		font-size: 0.8rem;
+		margin-top: 0.5rem;
+	}
+</style>

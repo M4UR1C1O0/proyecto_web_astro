@@ -1,0 +1,38 @@
+---
+// Identificador gráfico institucional de la UTEM (versión principal horizontal, archivo oficial de utem.cl).
+// Uso autorizado para este proyecto académico (ver INFORME.md, Anexo I).
+// Reglas aplicadas del Manual de identidad visual UTEM 2026 (F15):
+//   - 1.4 Tamaño mínimo digital de la versión principal: 200 px de ancho (≈ 70 px de alto). Nunca menos.
+//   - 1.3 Área de resguardo: espacio libre alrededor del logo (aquí, margen interno de 12 px).
+//   - 4.6 Sin degradados, sombras, brillos ni otros efectos; sin deformar ni cambiar colores.
+//     Sobre fondo blanco va a color; sobre fondo saturado (pie azul) va "calado" en blanco.
+interface Props {
+	/** "color" sobre fondo blanco; "blanco" (calado) sobre fondo de color saturado. */
+	version?: 'color' | 'blanco';
+}
+
+const { version = 'color' } = Astro.props;
+const base: string = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const archivo: string = version === 'blanco' ? 'logo-utem-blanco.svg' : 'logo-utem.svg';
+---
+
+<img
+	class="logo"
+	src={`${base}logos/${archivo}`}
+	alt="Universidad Tecnológica Metropolitana (UTEM)"
+	width="200"
+	height="69"
+	decoding="async"
+/>
+
+<style>
+	.logo {
+		display: block;
+		/* Ancho fijo de 200 px: es el mínimo digital del manual; no se reduce en celular. */
+		width: 200px;
+		min-width: 200px;
+		height: auto;
+		padding: 12px 0; /* Área de resguardo vertical. */
+		box-sizing: content-box;
+	}
+</style>

@@ -3,18 +3,116 @@
 		"id": "semestre-1",
 		"semestre": 1,
 		"asignaturas": [
-			{ "codigo": "MAT101", "nombre": "Matemática I", "creditos": 6 },
-			{ "codigo": "INF101", "nombre": "Introducción a la Programación", "creditos": 6 },
-			{ "codigo": "COM101", "nombre": "Comunicación Oral y Escrita", "creditos": 4 }
+			"Habilidades de Razonamiento Lógico",
+			"Taller de Matemática",
+			"Taller de Ciencia y Tecnología",
+			"Introducción a la Ingeniería en Informática",
+			"Design Thinking",
+			"Algoritmos y Programación"
+		],
+		"fuentes": [
+			"F02"
 		]
 	},
 	{
 		"id": "semestre-2",
 		"semestre": 2,
 		"asignaturas": [
-			{ "codigo": "MAT102", "nombre": "Matemática II", "creditos": 6 },
-			{ "codigo": "INF102", "nombre": "Estructuras de Datos", "creditos": 6 },
-			{ "codigo": "FIS101", "nombre": "Física General", "creditos": 5 }
+			"Habilidades de Trabajo Académico",
+			"Calculo Diferencial",
+			"Algebra Clásica",
+			"Mecánica Clásica",
+			"Estructura de datos",
+			"Electivo Formación General"
+		],
+		"fuentes": [
+			"F02"
+		]
+	},
+	{
+		"id": "semestre-3",
+		"semestre": 3,
+		"asignaturas": [
+			"Cálculo Integral",
+			"Algebra Superior",
+			"Electromagnetismo",
+			"Base de Datos",
+			"Lenguaje de Programación"
+		],
+		"fuentes": [
+			"F02"
+		]
+	},
+	{
+		"id": "semestre-4",
+		"semestre": 4,
+		"asignaturas": [
+			"Estadística y Probabilidades",
+			"Ingeniería ambiental",
+			"Taller de Principios de Sustentabilidad",
+			"Grafos y Lenguajes Formales",
+			"Sistema de Información",
+			"Arquitectura de Computadores"
+		],
+		"fuentes": [
+			"F02"
+		]
+	},
+	{
+		"id": "semestre-5",
+		"semestre": 5,
+		"asignaturas": [
+			"Circuitos Eléctricos",
+			"Principios de economía",
+			"Inglés I",
+			"Desarrollo ágil",
+			"Sistemas Operativos",
+			"Análisis de Algoritmos"
+		],
+		"fuentes": [
+			"F02"
+		]
+	},
+	{
+		"id": "semestre-6",
+		"semestre": 6,
+		"asignaturas": [
+			"Inglés II",
+			"Fundamentos de Data Science",
+			"Ciberseguridad",
+			"Evaluación de proyectos Informáticos",
+			"Ingeniería de Software",
+			"Redes y Comunicación de datos"
+		],
+		"fuentes": [
+			"F02"
+		]
+	},
+	{
+		"id": "semestre-7",
+		"semestre": 7,
+		"asignaturas": [
+			"Gestión de proyectos informáticos",
+			"Computación en la Nube",
+			"Computación Web y Móvil",
+			"Electivo de formación Especializada I",
+			"Electivo de formación Especializada II",
+			"Trabajo de título II"
+		],
+		"fuentes": [
+			"F02"
+		]
+	},
+	{
+		"id": "semestre-8",
+		"semestre": 8,
+		"asignaturas": [
+			"Taller de Innovación y emprendimiento",
+			"Trabajo de Título",
+			"Práctica Profesional"
+		],
+		"fuentes": [
+			"F02"
 		]
 	}
 ]

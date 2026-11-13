@@ -1,14 +1,82 @@
 ---
-const competencias = [
-	'Competencia 1 del perfil de egreso.',
-	'Competencia 2 del perfil de egreso.',
-	'Competencia 3 del perfil de egreso.',
-];
+// Perfil de egreso (Fase C, sección 3): competencias reescritas en lenguaje claro (perfil.json).
+// Cada competencia permite desplegar el texto oficial, para que la reescritura sea verificable.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import EncabezadoSeccion from './EncabezadoSeccion.astro';
+import Fuentes from './Fuentes.astro';
+import { obtenerSeccion, porOrden } from '../lib/contenido';
+
+const seccion = await obtenerSeccion('perfil');
+const competencias: CollectionEntry<'perfil'>[] = porOrden(await getCollection('perfil'));
 ---
 
-<section id="perfil-egreso">
-	<h2>Perfil de egreso</h2>
-	<ul>
-		{competencias.map((c) => <li>{c}</li>)}
-	</ul>
+<section id="perfil-egreso" aria-labelledby="titulo-perfil">
+	<div class="contenedor">
+		<EncabezadoSeccion seccion={seccion} idTitulo="titulo-perfil" />
+		<ol class="competencias">
+			{
+				competencias.map(({ data }) => (
+					<li>
+						<p class="texto">{data.competencia}</p>
+						<details>
+							<summary>Ver texto oficial</summary>
+							<blockquote>{data.textoOficial}</blockquote>
+						</details>
+						<Fuentes fuentes={data.fuentes} />
+					</li>
+				))
+			}
+		</ol>
+	</div>
 </section>
+
+<style>
+	.competencias {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+		gap: 1rem;
+		padding: 0;
+		margin: 1.5rem 0 0;
+		list-style: none;
+		counter-reset: competencia;
+	}
+
+	li {
+		counter-increment: competencia;
+		background: var(--fondo);
+		border: 1px solid var(--borde);
+		border-radius: var(--radio);
+		padding: 1rem 1.1rem;
+	}
+
+	/* Número grande de la competencia, solo decorativo (la lista <ol> ya lo comunica). */
+	li::before {
+		content: counter(competencia);
+		display: inline-grid;
+		place-items: center;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		background: var(--celeste);
+		color: var(--marino);
+		font-weight: 800;
+	}
+
+	.texto {
+		font-size: 1.1rem;
+		font-weight: 600;
+		margin: 0.5rem 0;
+	}
+
+	summary {
+		cursor: pointer;
+		color: var(--azul);
+	}
+
+	blockquote {
+		margin: 0.5rem 0 0;
+		padding-left: 0.75rem;
+		border-left: 3px solid var(--borde);
+		color: var(--suave);
+	}
+</style>

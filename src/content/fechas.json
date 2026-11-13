@@ -1,0 +1,57 @@
+[
+	{
+		"id": "rendicion",
+		"fecha": "2026-11-30",
+		"hasta": "2026-12-02",
+		"hito": "Rendición de la PAES Regular",
+		"fuentes": [
+			"F18"
+		]
+	},
+	{
+		"id": "resultados-paes",
+		"fecha": "2027-01-04",
+		"hora": "08:00",
+		"hito": "Resultados de puntajes PAES Regular",
+		"fuentes": [
+			"F18"
+		]
+	},
+	{
+		"id": "postulacion",
+		"fecha": "2027-01-04",
+		"hasta": "2027-01-07",
+		"hora": "Del 4 a las 09:00 al 7 a las 13:00",
+		"hito": "Postulación a las carreras",
+		"fuentes": [
+			"F18"
+		]
+	},
+	{
+		"id": "seleccion",
+		"fecha": "2027-01-18",
+		"hora": "12:00",
+		"hito": "Resultados del proceso de selección",
+		"fuentes": [
+			"F18"
+		]
+	},
+	{
+		"id": "matricula-1",
+		"fecha": "2027-01-19",
+		"hasta": "2027-01-21",
+		"hito": "Matrícula, primera etapa",
+		"fuentes": [
+			"F18"
+		]
+	},
+	{
+		"id": "matricula-2",
+		"fecha": "2027-01-22",
+		"hasta": "2027-01-28",
+		"hito": "Matrícula, segunda etapa",
+		"fuentes": [
+			"F18"
+		]
+	}
+]

@@ -1,0 +1,97 @@
+---
+// Banda de llamado a la acción (idea de landing pages educativas: "reserva tu clase" → "postula").
+// No agrega datos nuevos: muestra el período de postulación desde fechas.json (F18)
+// y el texto desde secciones.json ("llamado"), con sus fuentes.
+import { getEntry, type CollectionEntry } from 'astro:content';
+import Fuentes from './Fuentes.astro';
+import { obtenerSeccion, rangoFechas } from '../lib/contenido';
+
+const seccion = await obtenerSeccion('llamado');
+const postulacion: CollectionEntry<'fechas'> | undefined = await getEntry('fechas', 'postulacion');
+if (!postulacion) {
+	throw new Error('Falta la fecha "postulacion" en src/content/fechas.json');
+}
+---
+
+<section class="llamado" aria-labelledby="titulo-llamado">
+	<div class="contenedor">
+		<div class="caja">
+			<svg class="calendario" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+				<path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4M8 14h2M12 14h2M8 17h2" />
+			</svg>
+			<div class="texto">
+				<p class="pregunta">{seccion.data.pregunta}</p>
+				<h2 id="titulo-llamado">{seccion.data.titulo}</h2>
+				<p>
+					<strong>
+						Postulación: <time datetime={postulacion.data.fecha}>{rangoFechas(postulacion.data.fecha, postulacion.data.hasta)}</time>
+					</strong>
+					{postulacion.data.hora && <> ({postulacion.data.hora})</>}.
+				</p>
+				<Fuentes fuentes={postulacion.data.fuentes} />
+				{seccion.data.intro && <p>{seccion.data.intro}</p>}
+				<Fuentes fuentes={seccion.data.fuentes} />
+			</div>
+			<a class="boton" href="#admision">Ver ponderaciones y fechas</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.llamado {
+		padding: 2.5rem 0;
+		background: var(--fondo);
+	}
+
+	/* Caja celeste (color de la facultad) con texto en azul complementario (6,7:1). */
+	.caja {
+		display: grid;
+		gap: 1.25rem;
+		align-items: center;
+		background: var(--celeste);
+		color: var(--marino);
+		border-radius: 18px;
+		padding: 1.75rem;
+	}
+
+	@media (min-width: 48rem) {
+		.caja {
+			grid-template-columns: auto 1fr auto;
+			padding: 2rem 2.5rem;
+		}
+	}
+
+	.calendario {
+		width: 4rem;
+		height: 4rem;
+		padding: 0.8rem;
+		border-radius: 16px;
+		background: var(--marino);
+		fill: none;
+		stroke: var(--celeste);
+		stroke-width: 1.8;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	.pregunta {
+		margin: 0;
+		font-weight: 800;
+		font-size: 0.85rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	h2 {
+		margin: 0.2rem 0 0.4rem;
+	}
+
+	.texto p {
+		margin: 0.25rem 0 0;
+	}
+
+	.texto :global(.fuente),
+	.texto :global(a.cita) {
+		color: var(--marino);
+	}
+</style>

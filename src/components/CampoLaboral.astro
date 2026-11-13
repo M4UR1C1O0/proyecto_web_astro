@@ -1,18 +1,47 @@
 ---
-import { getCollection } from 'astro:content';
+// Campo laboral (Fase C, sección 4): áreas de desempeño (campo-laboral.json)
+// y empleabilidad e ingresos con el año del dato (cifras.json, sección "campo").
+import { getCollection, type CollectionEntry } from 'astro:content';
+import EncabezadoSeccion from './EncabezadoSeccion.astro';
+import ListaCifras from './ListaCifras.astro';
+import Fuentes from './Fuentes.astro';
+import { obtenerSeccion } from '../lib/contenido';
 
-const areas = await getCollection('campo-laboral');
+const seccion = await obtenerSeccion('campo');
+const areas: CollectionEntry<'campo-laboral'>[] = await getCollection('campo-laboral');
 ---
 
-<section id="campo-laboral">
-	<h2>Campo laboral</h2>
-	<ul>
-		{
-			areas.map(({ data }) => (
-				<li>
-					<strong>{data.titulo}:</strong> {data.descripcion}
-				</li>
-			))
-		}
-	</ul>
+<section id="campo-laboral" aria-labelledby="titulo-campo">
+	<div class="contenedor">
+		<EncabezadoSeccion seccion={seccion} idTitulo="titulo-campo" />
+		<ListaCifras seccion="campo" />
+		<h3>Áreas de desempeño</h3>
+		<ul class="areas">
+			{
+				areas.map(({ data }) => (
+					<li>
+						<strong>{data.titulo}.</strong> {data.descripcion}
+						<Fuentes fuentes={data.fuentes} />
+					</li>
+				))
+			}
+		</ul>
+	</div>
 </section>
+
+<style>
+	.areas {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+		gap: 1rem;
+		padding: 0;
+		list-style: none;
+	}
+
+	.areas li {
+		background: var(--fondo);
+		border-left: 4px solid var(--azul);
+		border-radius: 0 var(--radio) var(--radio) 0;
+		padding: 0.75rem 1rem;
+	}
+</style>

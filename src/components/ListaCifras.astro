@@ -1,0 +1,110 @@
+---
+// Tarjetas de cifras de una sección: cada una muestra su valor, su período y sus fuentes citadas.
+// Los datos vienen de src/content/cifras.json (validado con esquema en content.config.ts).
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Fuentes from './Fuentes.astro';
+import NotaEquipo from './NotaEquipo.astro';
+import { porOrden } from '../lib/contenido';
+
+// Nombre de sección permitido por el esquema ('portada', 'sobre', 'plan', ...).
+type Seccion = CollectionEntry<'cifras'>['data']['secciones'][number];
+
+interface Props {
+	seccion: Seccion;
+	/** Ids de cifras que se quieren mostrar; si se omite, se muestran todas las de la sección. */
+	solo?: string[];
+	/** Ids de cifras que no se quieren mostrar. */
+	excepto?: string[];
+	/** Versión compacta (valores más pequeños, dos columnas en celular), para la ficha de la portada. */
+	compacta?: boolean;
+}
+
+const { seccion, solo, excepto = [], compacta = false } = Astro.props;
+
+// Solo las cifras marcadas para esta sección, filtradas y en el orden indicado en el JSON.
+const cifras: CollectionEntry<'cifras'>[] = porOrden(
+	(await getCollection('cifras')).filter(
+		(c) =>
+			c.data.secciones.includes(seccion) &&
+			(!solo || solo.includes(c.id)) &&
+			!excepto.includes(c.id),
+	),
+);
+---
+
+<dl class:list={['cifras', { compacta }]}>
+	{
+		cifras.map(({ data }) => (
+			<div class="cifra">
+				<dt>{data.etiqueta}</dt>
+				<dd class="valor">{data.valor}</dd>
+				{data.detalle && <dd class="detalle">{data.detalle}</dd>}
+				<dd>
+					<Fuentes fuentes={data.fuentes} prefijo={data.periodo} />
+				</dd>
+				{data.notaEquipo && (
+					<dd>
+						<NotaEquipo texto={data.notaEquipo} />
+					</dd>
+				)}
+			</div>
+		))
+	}
+</dl>
+
+<style>
+	.cifras {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+		gap: 1rem;
+		margin: 1.5rem 0 0;
+	}
+
+	.cifra {
+		/* Color de texto explícito: la tarjeta puede estar dentro de la portada, que usa texto blanco. */
+		color: var(--texto);
+		background: var(--fondo);
+		border: 1px solid var(--borde);
+		border-top: 4px solid var(--celeste);
+		border-radius: var(--radio);
+		padding: 1rem 1.1rem;
+	}
+
+	dt {
+		font-weight: 700;
+		color: var(--marino);
+	}
+
+	dd {
+		margin: 0.25rem 0 0;
+	}
+
+	.valor {
+		font-size: 1.6rem;
+		font-weight: 800;
+		color: var(--azul);
+		line-height: 1.2;
+	}
+
+	.detalle {
+		font-size: 0.95rem;
+	}
+
+	/* Ficha compacta: tarjetas más bajas; en celular caben dos por fila. */
+	.compacta {
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
+		gap: 0.6rem;
+	}
+
+	.compacta .cifra {
+		padding: 0.7rem 0.8rem;
+	}
+
+	.compacta .valor {
+		font-size: 1.1rem;
+	}
+
+	.compacta dt {
+		font-size: 0.9rem;
+	}
+</style>

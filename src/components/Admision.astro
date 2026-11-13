@@ -1,0 +1,131 @@
+---
+// Admisión, costos y financiamiento (Fase C, sección 6): vías de ingreso, ponderaciones y fechas clave.
+// Cifras: cifras.json (sección "admision"). Ponderaciones: ponderaciones.json. Fechas: fechas.json.
+// El puntaje de corte se omite: no aparece en ninguna fuente oficial revisada.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import EncabezadoSeccion from './EncabezadoSeccion.astro';
+import ListaCifras from './ListaCifras.astro';
+import Fuentes from './Fuentes.astro';
+import { obtenerSeccion, porOrden, rangoFechas } from '../lib/contenido';
+
+const seccion = await obtenerSeccion('admision');
+const ponderaciones: CollectionEntry<'ponderaciones'>[] = porOrden(await getCollection('ponderaciones'));
+const fechas: CollectionEntry<'fechas'>[] = (await getCollection('fechas')).sort((a, b) =>
+	a.data.fecha.localeCompare(b.data.fecha),
+);
+
+// La suma se calcula, no se escribe a mano: si alguien edita un porcentaje, el total se actualiza solo.
+const totalPonderacion: number = ponderaciones.reduce((suma, p) => suma + p.data.porcentaje, 0);
+const fuentesPonderacion: { id: string }[] = ponderaciones[0]?.data.fuentes ?? [];
+const fuentesFechas: { id: string }[] = fechas[0]?.data.fuentes ?? [];
+---
+
+<section id="admision" aria-labelledby="titulo-admision">
+	<div class="contenedor">
+		<EncabezadoSeccion seccion={seccion} idTitulo="titulo-admision" mostrarNota={false} />
+		<ListaCifras seccion="admision" />
+
+		<div class="columnas">
+			<div>
+				<h3 id="titulo-ponderaciones">Ponderaciones (Admisión 2027)</h3>
+				<table aria-labelledby="titulo-ponderaciones">
+					<thead>
+						<tr>
+							<th scope="col">Prueba o antecedente</th>
+							<th scope="col" class="num">Peso</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							ponderaciones.map(({ data }) => (
+								<tr>
+									<th scope="row">{data.prueba}</th>
+									<td class="num">{data.porcentaje} %</td>
+								</tr>
+							))
+						}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th scope="row">Total</th>
+							<td class="num">{totalPonderacion} %</td>
+						</tr>
+					</tfoot>
+				</table>
+				<Fuentes fuentes={fuentesPonderacion} />
+			</div>
+
+			<div>
+				<h3 id="titulo-fechas">Fechas clave (Admisión 2027)</h3>
+				<ol class="fechas" aria-labelledby="titulo-fechas">
+					{
+						fechas.map(({ data }) => (
+							<li>
+								<span class="cuando">
+									<time datetime={data.fecha}>{rangoFechas(data.fecha, data.hasta)}</time>
+									{data.hora && <span class="hora"> · {data.hora}</span>}
+								</span>
+								<span class="hito">{data.hito}</span>
+							</li>
+						))
+					}
+				</ol>
+				<Fuentes fuentes={fuentesFechas} />
+			</div>
+		</div>
+
+		<!-- El bloque "Si estás en 3.° medio" se quitó junto con las interpretaciones del equipo
+		     (ver NotaEquipo.astro). Su texto sigue en secciones.json ("admision" → notaEquipo). -->
+	</div>
+</section>
+
+<style>
+	.columnas {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+		gap: 2rem;
+	}
+
+	table {
+		background: var(--fondo);
+	}
+
+	.num {
+		text-align: right;
+		white-space: nowrap;
+		font-weight: 700;
+	}
+
+	tfoot th,
+	tfoot td {
+		border-top: 2px solid var(--marino);
+		font-weight: 700;
+	}
+
+	.fechas {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		border-left: 3px solid var(--celeste);
+	}
+
+	.fechas li {
+		padding: 0.4rem 0 0.8rem 1rem;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.cuando {
+		font-weight: 700;
+		color: var(--marino);
+	}
+
+	.hora {
+		font-weight: 400;
+		color: var(--suave);
+	}
+
+	.nota-3m {
+		max-width: 46rem;
+	}
+</style>

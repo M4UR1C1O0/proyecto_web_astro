@@ -1,0 +1,88 @@
+[
+	{
+		"id": "portada",
+		"titulo": "Ingeniería en Informática",
+		"pregunta": "¿Qué es la carrera?",
+		"intro": "Carrera de la Facultad de Ingeniería de la Universidad Tecnológica Metropolitana (UTEM). Forma profesionales «con sólida formación en ingeniería aplicada e informática».",
+		"fuentes": [
+			"F02",
+			"F01"
+		]
+	},
+	{
+		"id": "sobre",
+		"titulo": "Sobre la carrera",
+		"pregunta": "¿En qué se diferencia de carreras afines?",
+		"intro": "Según su folleto oficial, en esta carrera desarrollarás soluciones informáticas y productos de software para organizaciones. Abajo la comparamos con dos carreras afines de la misma universidad.",
+		"fuentes": [
+			"F02"
+		],
+		"notaEquipo": "Las tres carreras comparten la base en computación. Ingeniería en Informática es la más corta y se orienta a crear software y sistemas para organizaciones. Las dos ingenierías civiles duran 11 semestres y entregan un grado en Ciencias de la Ingeniería. Ciencia de Datos se centra en analizar grandes volúmenes de datos."
+	},
+	{
+		"id": "perfil",
+		"titulo": "Perfil de egreso",
+		"pregunta": "¿Qué podré hacer al titularme?",
+		"intro": "Estas son las competencias del perfil de egreso oficial, escritas en lenguaje simple. Abre cada una para leer el texto original del folleto."
+	},
+	{
+		"id": "campo",
+		"titulo": "Campo laboral",
+		"pregunta": "¿Dónde trabajaré y cuánto ganaré?",
+		"intro": "Las cifras son de Mi Futuro, portal del Ministerio de Educación (Mineduc), y corresponden a la fila «Ingeniería en Informática» de la UTEM. Se calculan con declaraciones de impuestos del Servicio de Impuestos Internos (SII).",
+		"fuentes": [
+			"F04",
+			"F17"
+		],
+		"notaEquipo": "Son promedios de varias generaciones de titulados. No garantizan el resultado de una persona en particular."
+	},
+	{
+		"id": "plan",
+		"titulo": "Plan de estudios",
+		"pregunta": "¿Qué aprenderé?",
+		"intro": "El plan dura 8 semestres y suma 240 créditos SCT (Sistema de Créditos Transferibles). El SCT mide la carga total de trabajo del estudiante.",
+		"fuentes": [
+			"F03"
+		],
+		"notaEquipo": "La página web de la carrera muestra una malla distinta, con 38 asignaturas. Usamos el folleto 2026 porque es el documento oficial fechado más reciente."
+	},
+	{
+		"id": "admision",
+		"titulo": "Admisión, costos y financiamiento",
+		"pregunta": "¿Cómo postulo y qué necesito?",
+		"intro": "Se postula por el Sistema de Acceso, rindiendo la Prueba de Acceso a la Educación Superior (PAES). El Departamento de Evaluación, Medición y Registro Educacional (DEMRE) publica las fechas y las ponderaciones.",
+		"fuentes": [
+			"F19",
+			"F18"
+		],
+		"notaEquipo": "Si estás en 3.° medio, postularás en un proceso posterior. Como referencia, en el proceso 2027 la inscripción a la PAES Regular fue del 1 de junio al 27 de julio de 2026."
+	},
+	{
+		"id": "faq",
+		"titulo": "Preguntas frecuentes",
+		"pregunta": "¿Qué dudas tiene quien postula?",
+		"intro": "Estas preguntas las escribieron personas del público objetivo en nuestra encuesta. Cada respuesta indica su fuente."
+	},
+	{
+		"id": "respaldo",
+		"titulo": "Respaldo institucional",
+		"pregunta": "¿Qué garantías hay?",
+		"intro": "La acreditación evalúa a toda la universidad; la certificación evalúa solo a esta carrera. Por eso las mostramos por separado.",
+		"notaEquipo": "Los laboratorios listados son de investigación y pertenecen al Departamento de Informática y Computación. La fuente no indica si los usan estudiantes de pregrado."
+	},
+	{
+		"id": "referencias",
+		"titulo": "Referencias",
+		"pregunta": "¿De dónde sale esta información?",
+		"intro": "Fuentes en formato APA 7. En las citas breves usamos estas siglas: UTEM, CNA, DEMRE y Mineduc."
+	},
+	{
+		"id": "llamado",
+		"titulo": "Postula en la Admisión 2027",
+		"pregunta": "¿Te interesa la carrera?",
+		"intro": "Revisa las ponderaciones y las fechas clave, y prepara tu postulación con el código 21030.",
+		"fuentes": [
+			"F19"
+		]
+	}
+]

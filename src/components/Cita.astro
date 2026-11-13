@@ -1,0 +1,51 @@
+---
+// Cita breve en formato APA 7 dentro del texto, por ejemplo "(Mineduc, s.f.-a)".
+// Enlaza a la referencia completa en la sección Referencias (cada entrada tiene id="ref-F01", etc.).
+import { getEntry, type CollectionEntry } from 'astro:content';
+
+interface Props {
+	/** Id de la fuente en la matriz de la Fase A (F01, F02...). */
+	id: string;
+}
+
+const { id } = Astro.props;
+const referencia: CollectionEntry<'referencias'> | undefined = await getEntry('referencias', id);
+
+// Si la fuente no existe, se detiene el build en vez de publicar una cita rota.
+if (!referencia) {
+	throw new Error(`La fuente ${id} no existe en src/content/referencias.json`);
+}
+
+const { autor, sigla, fecha } = referencia.data;
+// En la cita dentro del texto APA usa solo el año: "2022, 2 de agosto" se cita como "2022".
+const anioCita: string = fecha.split(',')[0];
+---
+
+<a class="cita" href={`#ref-${id}`}>
+	({sigla ? <abbr title={autor}>{sigla}</abbr> : autor}, {anioCita})
+</a>
+
+<style>
+	/* Cita discreta: mismo color que el texto que la rodea y subrayado punteado fino.
+	   El punteado se mantiene para que se reconozca como enlace sin depender del color (WCAG 1.4.1). */
+	.cita {
+		/* Área táctil de al menos 24 px de alto (WCAG 2.5.8), aunque la letra sea pequeña. */
+		display: inline-block;
+		min-height: 24px;
+		line-height: 24px;
+		white-space: nowrap;
+		color: inherit;
+		text-decoration: underline dotted;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.2em;
+	}
+
+	.cita:hover,
+	.cita:focus-visible {
+		text-decoration-style: solid;
+	}
+
+	abbr {
+		text-decoration: none;
+	}
+</style>

@@ -1,17 +1,62 @@
 ---
-import { getCollection } from 'astro:content';
+// Preguntas frecuentes (Fase C, sección 7): preguntas reales de la encuesta (Fase B), con fuentes.
+// <details> abre y cierra cada respuesta sin JavaScript y funciona con teclado.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import EncabezadoSeccion from './EncabezadoSeccion.astro';
+import Fuentes from './Fuentes.astro';
+import NotaEquipo from './NotaEquipo.astro';
+import { obtenerSeccion, porOrden } from '../lib/contenido';
 
-const preguntas = (await getCollection('faq')).sort((a, b) => a.data.orden - b.data.orden);
+const seccion = await obtenerSeccion('faq');
+const preguntas: CollectionEntry<'faq'>[] = porOrden(await getCollection('faq'));
 ---
 
-<section id="faq">
-	<h2>Preguntas frecuentes</h2>
-	{
-		preguntas.map(({ data }) => (
-			<details>
-				<summary>{data.pregunta}</summary>
-				<p>{data.respuesta}</p>
-			</details>
-		))
-	}
+<section id="faq" aria-labelledby="titulo-faq">
+	<div class="contenedor">
+		<EncabezadoSeccion seccion={seccion} idTitulo="titulo-faq" />
+		<div class="lista">
+			{
+				preguntas.map(({ data }) => (
+					<details>
+						<summary>{data.pregunta}</summary>
+						<div class="respuesta">
+							<p>{data.respuesta}</p>
+							<Fuentes fuentes={data.fuentes} />
+							{data.notaEquipo && <NotaEquipo texto={data.notaEquipo} />}
+						</div>
+					</details>
+				))
+			}
+		</div>
+	</div>
 </section>
+
+<style>
+	.lista {
+		margin-top: 1.5rem;
+		max-width: 50rem;
+	}
+
+	details {
+		background: var(--fondo);
+		border: 1px solid var(--borde);
+		border-radius: var(--radio);
+		margin-bottom: 0.75rem;
+	}
+
+	summary {
+		cursor: pointer;
+		font-weight: 700;
+		color: var(--marino);
+		padding: 0.9rem 1rem;
+		min-height: 2.75rem;
+	}
+
+	.respuesta {
+		padding: 0 1rem 1rem;
+	}
+
+	.respuesta p:first-child {
+		margin-top: 0;
+	}
+</style>

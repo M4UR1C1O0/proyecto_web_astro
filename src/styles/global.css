@@ -1,0 +1,207 @@
+/*
+ * Estilos globales del sitio.
+ * Colores y su uso según el Manual de identidad visual UTEM 2026 (F15), capítulo 4:
+ *   - 4.2 Color de facultad: "toda pieza visual que represente a una facultad o sus carreras debe usar
+ *     de forma jerárquica y predominante el color asignado". Ingeniería en Informática pertenece a la
+ *     Facultad de Ingeniería → celeste #00B6ED (Pantone 306) es el color PREDOMINANTE del sitio
+ *     (fondo de la portada, fondos alternos de las secciones, bordes y acentos).
+ *   - 4.1 Colores identitarios: azul #004EAA (Pantone 2145) y verde #78BF26 (Pantone 368), más el blanco.
+ *     Azul: enlaces y textos destacados. Verde: solo detalles decorativos (nunca junto a rojo, ver 7.4).
+ *   - 4.4 Color complementario: azul #0B2341 (Pantone 289), "de uso transversal" y "solemne":
+ *     textos sobre celeste, botones principales y pie de página.
+ *   - 4.6: los fondos deben ser preferentemente de la paleta institucional y asegurar contraste.
+ * Contrastes verificados para WCAG 2.2 AA (mínimo 4,5:1 en texto normal):
+ *   #0B2341 sobre #00B6ED = 6,7:1 · #004EAA sobre blanco = 7,9:1 · blanco sobre #0B2341 = 15,9:1
+ *   #0B2341 sobre #E5F7FD = 15:1 · #4B5563 sobre blanco = 7,6:1
+ *   (El blanco sobre celeste NO se usa: solo 2,3:1.)
+ */
+
+:root {
+	--marino: #0b2341;
+	--azul: #004eaa;
+	--celeste: #00b6ed;
+	--verde: #78bf26;
+	--texto: #1f2328;
+	--suave: #4b5563;
+	--fondo: #ffffff;
+	/* Tinte claro del celeste de la Facultad de Ingeniería, para fondos alternos de las secciones. */
+	--fondo-alt: #e5f7fd;
+	--borde: #d0d7de;
+	--nota: #fff7e6;
+	--nota-borde: #b45309;
+	--radio: 10px;
+	--ancho: 72rem;
+
+	/* El manual F15 recomienda Aptos, Arial, Calibri, Tahoma o Verdana para soportes digitales.
+	   Se usan fuentes del sistema: no se descarga ninguna tipografía (mejor rendimiento). */
+	font-family: Aptos, 'Segoe UI', Arial, Helvetica, sans-serif;
+	line-height: 1.6;
+	color: var(--texto);
+	background: var(--fondo);
+	-webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-size: 1.0625rem;
+}
+
+/* Desplazamiento suave al usar el menú, salvo que la persona prefiera menos movimiento. */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+h1,
+h2,
+h3,
+h4 {
+	line-height: 1.25;
+	color: var(--marino);
+}
+
+h2 {
+	font-size: clamp(1.6rem, 4vw, 2.1rem);
+	margin: 0 0 0.25rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin: 2rem 0 0.75rem;
+}
+
+a {
+	color: var(--azul);
+	text-underline-offset: 0.15em;
+}
+
+a:hover {
+	text-decoration-thickness: 2px;
+}
+
+/* Foco visible y grueso para navegación con teclado (WCAG 2.4.7 y 2.4.13). */
+:focus-visible {
+	outline: 3px solid var(--azul);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+/* Contenedor centrado con márgenes laterales; evita scroll horizontal en 360 px. */
+.contenedor {
+	width: 100%;
+	max-width: var(--ancho);
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+/* Cada sección deja espacio para el menú fijo al saltar desde un enlace. */
+section {
+	padding: 3rem 0;
+	/* Espacio para el encabezado fijo (logo de 200 px + menú) al saltar desde un enlace. */
+	scroll-margin-top: 8rem;
+}
+
+/* En celular el encabezado no es fijo, así que no hace falta ese espacio. */
+@media (max-width: 30rem) {
+	section {
+		scroll-margin-top: 0;
+	}
+}
+
+section:nth-of-type(even) {
+	background: var(--fondo-alt);
+}
+
+/* Enlace "Saltar al contenido": oculto hasta que recibe foco con el teclado. */
+.saltar {
+	position: absolute;
+	left: -9999px;
+	top: 0;
+}
+
+.saltar:focus {
+	left: 1rem;
+	top: 1rem;
+	z-index: 20;
+	background: var(--fondo);
+	padding: 0.5rem 1rem;
+}
+
+/* Texto solo para lectores de pantalla. */
+.solo-lector {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Tablas: en pantallas angostas se desplazan dentro de su caja, no la página. */
+.tabla-scroll {
+	overflow-x: auto;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+caption {
+	text-align: left;
+	color: var(--suave);
+	font-size: 0.9rem;
+	margin-bottom: 0.5rem;
+}
+
+th,
+td {
+	border-bottom: 1px solid var(--borde);
+	padding: 0.6rem 0.5rem;
+	text-align: left;
+	vertical-align: top;
+}
+
+thead th {
+	color: var(--marino);
+	border-bottom: 2px solid var(--marino);
+}
+
+/* Botón principal (llamado a la acción): azul complementario, que contrasta sobre celeste y sobre blanco. */
+.boton {
+	display: inline-block;
+	padding: 0.75rem 1.25rem;
+	border: 2px solid var(--marino);
+	border-radius: 999px;
+	background: var(--marino);
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+/* Botón secundario: solo contorno, sobre el mismo fondo. */
+.boton.secundario {
+	background: transparent;
+	color: var(--marino);
+}
+
+.boton:hover {
+	text-decoration: underline;
+}
+
+/* Cita discreta bajo un dato: período y cita APA en letra pequeña y gris. */
+.fuente {
+	font-size: 0.8rem;
+	color: var(--suave);
+	margin: 0.35rem 0 0;
+}

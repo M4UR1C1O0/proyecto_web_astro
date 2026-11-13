@@ -1,18 +1,201 @@
 ---
-import { getCollection } from 'astro:content';
+// Referencias (Fase C, sección 9): lista en formato APA 7 con fecha de consulta (referencias.json).
+// Diseño para leerla fácil:
+//   - agrupada por institución (autor), con encabezado y cantidad de fuentes;
+//   - cada referencia muestra primero su cita breve (la misma que aparece en el sitio) y su código F..;
+//   - al lado, la referencia APA completa con sangría francesa y un botón "Abrir fuente".
+// El orden sigue APA 7 (ordenApa): alfabético por autor y, dentro de cada autor, s.f. antes que las fechas.
+// Cada <li> tiene id="ref-F01", etc., para que las citas breves del sitio enlacen aquí.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import EncabezadoSeccion from './EncabezadoSeccion.astro';
+import { obtenerSeccion, ordenApa } from '../lib/contenido';
 
-const referencias = await getCollection('referencias');
+const seccion = await obtenerSeccion('referencias');
+const referencias: CollectionEntry<'referencias'>[] = ordenApa(await getCollection('referencias'));
+
+// Grupos por autor, conservando el orden APA (Map mantiene el orden de inserción).
+interface Grupo {
+	autor: string;
+	sigla?: string;
+	items: CollectionEntry<'referencias'>[];
+}
+const grupos: Grupo[] = [
+	...referencias
+		.reduce((mapa: Map<string, Grupo>, ref) => {
+			const grupo: Grupo = mapa.get(ref.data.autor) ?? { autor: ref.data.autor, sigla: ref.data.sigla, items: [] };
+			grupo.items.push(ref);
+			mapa.set(ref.data.autor, grupo);
+			return mapa;
+		}, new Map<string, Grupo>())
+		.values(),
+];
+
+// Cita breve tal como aparece en el sitio, por ejemplo "(UTEM, s.f.-d)".
+const citaBreve = (ref: CollectionEntry<'referencias'>): string =>
+	`(${ref.data.sigla ?? ref.data.autor}, ${ref.data.fecha.split(',')[0]})`;
+
+// Dominio de la URL, para mostrar de dónde viene la fuente (por ejemplo "utem.cl").
+const dominio = (url: string): string => new URL(url).hostname.replace(/^www\./, '');
 ---
 
-<section id="referencias">
-	<h2>Referencias</h2>
-	<ol>
+<section id="referencias" aria-labelledby="titulo-referencias">
+	<div class="contenedor">
+		<EncabezadoSeccion seccion={seccion} idTitulo="titulo-referencias" />
+
 		{
-			referencias.map(({ data }) => (
-				<li>
-					{data.autor} ({data.anio}). {data.url ? <a href={data.url}>{data.titulo}</a> : data.titulo}.
-				</li>
+			grupos.map((grupo) => (
+				<div class="grupo">
+					<h3>
+						{grupo.sigla && <span class="sigla">{grupo.sigla}</span>}
+						{grupo.autor}
+						<span class="cantidad">
+							{grupo.items.length} {grupo.items.length === 1 ? 'fuente' : 'fuentes'}
+						</span>
+					</h3>
+					<ul class="lista">
+						{grupo.items.map((ref) => (
+							<li id={`ref-${ref.id}`} class="referencia">
+								<div class="clave">
+									<span class="cita-breve">{citaBreve(ref)}</span>
+									<span class="codigo">{ref.id}</span>
+								</div>
+								<div class="cuerpo">
+									<p class="apa">
+										{ref.data.autor}. ({ref.data.fecha}). <cite>{ref.data.titulo}</cite>
+										{ref.data.formato && ` [${ref.data.formato}]`}.{ref.data.sitio && ` ${ref.data.sitio}.`}{' '}
+										{ref.data.recuperado && `Recuperado el ${ref.data.recuperado}, de `}
+										<span class="url">{ref.data.url}</span>
+									</p>
+									<a class="abrir" href={ref.data.url}>
+										Abrir fuente<span class="solo-lector">: {ref.data.titulo}</span> · {dominio(ref.data.url)}
+									</a>
+								</div>
+							</li>
+						))}
+					</ul>
+				</div>
 			))
 		}
-	</ol>
+	</div>
 </section>
+
+<style>
+	.grupo {
+		margin-top: 2rem;
+	}
+
+	h3 {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		margin: 0 0 0.75rem;
+		font-size: 1.1rem;
+	}
+
+	.sigla {
+		background: var(--marino);
+		color: #fff;
+		font-size: 0.8rem;
+		padding: 0.15rem 0.6rem;
+		border-radius: 6px;
+	}
+
+	.cantidad {
+		font-size: 0.8rem;
+		font-weight: 400;
+		color: var(--suave);
+	}
+
+	.lista {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		background: var(--fondo);
+		border: 1px solid var(--borde);
+		border-radius: 14px;
+		overflow: hidden;
+	}
+
+	/* Cada referencia: columna izquierda con la cita breve y el código; derecha con el texto APA. */
+	.referencia {
+		display: grid;
+		grid-template-columns: 9.5rem 1fr;
+		gap: 1rem;
+		padding: 0.9rem 1.1rem;
+		scroll-margin-top: 8rem;
+	}
+
+	.referencia + .referencia {
+		border-top: 1px solid var(--borde);
+	}
+
+	/* Resalta la referencia a la que se llegó desde una cita. */
+	.referencia:target {
+		background: #e5f7fd;
+		box-shadow: inset 4px 0 0 var(--celeste);
+	}
+
+	.clave {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+		align-items: flex-start;
+	}
+
+	.cita-breve {
+		font-weight: 700;
+		color: var(--marino);
+	}
+
+	.codigo {
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: var(--marino);
+		background: var(--fondo-alt);
+		border: 1px solid var(--borde);
+		border-radius: 999px;
+		padding: 0 0.5rem;
+	}
+
+	.apa {
+		margin: 0;
+		/* Sangría francesa, como pide APA 7. */
+		padding-left: 1.5rem;
+		text-indent: -1.5rem;
+		font-size: 0.95rem;
+	}
+
+	/* URL completa (exigida por APA) en letra pequeña; se corta en cualquier punto para no desbordar en celular. */
+	.url {
+		color: var(--suave);
+		font-size: 0.85rem;
+		overflow-wrap: anywhere;
+	}
+
+	.abrir {
+		display: inline-block;
+		margin-top: 0.4rem;
+		min-height: 24px;
+		font-size: 0.85rem;
+		font-weight: 700;
+	}
+
+	@media (max-width: 40rem) {
+		.referencia {
+			grid-template-columns: 1fr;
+			gap: 0.4rem;
+		}
+
+		.clave {
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+
+	@media (max-width: 30rem) {
+		.referencia {
+			scroll-margin-top: 0;
+		}
+	}
+</style>

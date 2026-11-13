@@ -1,0 +1,167 @@
+---
+// Pie de página en columnas (idea de landing pages educativas), adaptado al proyecto:
+//   1) logo calado en blanco (permitido sobre fondo saturado, F15 sección 4.6) y aviso de proyecto académico;
+//   2) enlaces a las secciones; 3) contacto oficial para postulantes (cifras.json, sección "contacto");
+//   4) créditos: colores (F15), foto con licencia abierta y repositorio.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Cita from './Cita.astro';
+import Icono from './Icono.astro';
+import Logo from './Logo.astro';
+import { porOrden } from '../lib/contenido';
+
+const repositorio: string = 'https://github.com/M4UR1C1O0/proyecto_web_astro';
+const contacto: CollectionEntry<'cifras'>[] = porOrden(
+	(await getCollection('cifras')).filter((c) => c.data.secciones.includes('contacto')),
+);
+
+// Enlaces rápidos a las secciones (mismo orden que el menú).
+interface Enlace {
+	id: string;
+	texto: string;
+}
+const secciones: Enlace[] = [
+	{ id: 'sobre-la-carrera', texto: 'Sobre la carrera' },
+	{ id: 'perfil-egreso', texto: 'Perfil de egreso' },
+	{ id: 'campo-laboral', texto: 'Campo laboral' },
+	{ id: 'plan-estudios', texto: 'Plan de estudios' },
+	{ id: 'admision', texto: 'Admisión' },
+	{ id: 'faq', texto: 'Preguntas frecuentes' },
+	{ id: 'respaldo', texto: 'Respaldo institucional' },
+	{ id: 'referencias', texto: 'Referencias' },
+];
+---
+
+<footer class="pie">
+	<div class="contenedor columnas">
+		<div>
+			<Logo version="blanco" />
+			<p>
+				<strong>Proyecto académico, no es un sitio oficial de la UTEM.</strong> Elaborado para la asignatura EFE685
+				Electivo de Computación Móvil (2026).
+			</p>
+		</div>
+
+		<nav aria-labelledby="pie-secciones">
+			<h2 id="pie-secciones">Secciones</h2>
+			<ul>
+				{
+					secciones.map((s) => (
+						<li>
+							<a href={`#${s.id}`}>{s.texto}</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+
+		<div>
+			<h2>Contacto para postulantes</h2>
+			<ul class="contacto">
+				{
+					contacto.map(({ id, data }) => (
+						<li>
+							{data.icono && <Icono nombre={data.icono} class="icono-contacto" />}
+							<span>
+								{id === 'correo-postulantes' ? <a href={`mailto:${data.valor}`}>{data.valor}</a> : data.valor}
+								<br />
+								<small>
+									{data.periodo}.{' '}
+									{data.fuentes.map((f, i) => (
+									<>
+										{i > 0 && ' '}
+										<Cita id={f.id} />
+									</>
+								))}
+								</small>
+							</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
+		<div>
+			<h2>Créditos</h2>
+			<p>
+				Logo y colores según el Manual de identidad visual UTEM 2026 <Cita id="F15" />. Uso del logo autorizado para
+				este proyecto (ver informe).
+			</p>
+			<p>Foto de portada: Carlos Figueroa Rojas, CC BY-SA 4.0.</p>
+			<p>Código fuente en <a href={repositorio}>GitHub</a>.</p>
+		</div>
+	</div>
+	<div class="contenedor base">
+		<p>Cada dato del sitio indica su fuente en <a href="#referencias">Referencias</a>.</p>
+	</div>
+</footer>
+
+<style>
+	.pie {
+		/* Azul complementario: uso transversal y solemne (F15, sección 4.4). */
+		background: var(--marino);
+		color: #fff;
+		padding: 2.5rem 0 1rem;
+		font-size: 0.95rem;
+		border-top: 6px solid var(--celeste);
+	}
+
+	.columnas {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+		gap: 2rem;
+	}
+
+	h2 {
+		color: #fff;
+		font-size: 1.05rem;
+		margin: 0 0 0.75rem;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	li {
+		margin-bottom: 0.45rem;
+	}
+
+	.contacto li {
+		display: flex;
+		gap: 0.6rem;
+	}
+
+	.pie :global(.icono-contacto) {
+		flex: none;
+		width: 1.3rem;
+		height: 1.3rem;
+		color: var(--celeste);
+		margin-top: 0.15rem;
+	}
+
+	small {
+		color: #dbe6f3;
+	}
+
+	/* :global alcanza también los enlaces de <Cita>, que es otro componente (contraste 6,7:1 sobre el fondo). */
+	.pie :global(a) {
+		color: var(--celeste);
+	}
+
+	/* Citas discretas: heredan el color del texto que las rodea. */
+	.pie :global(a.cita) {
+		color: inherit;
+	}
+
+	.base {
+		border-top: 1px solid rgba(255, 255, 255, 0.2);
+		margin-top: 2rem;
+		padding-top: 1rem;
+		font-size: 0.85rem;
+	}
+
+	.base p {
+		margin: 0;
+	}
+</style>

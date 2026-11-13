@@ -1,0 +1,219 @@
+---
+// Sobre la carrera (Fase C, sección 2): propósito formativo y diferencia con 2 carreras afines.
+// Diseño de comparación:
+//   - una tarjeta por carrera, con las mismas filas (duración, título, grado, enfoque) ALINEADAS entre
+//     tarjetas gracias a CSS subgrid, para poder leer y comparar de lado a lado;
+//   - la duración se dibuja como bloques, uno por semestre (8 frente a 11), fácil de comparar de un vistazo.
+// Datos oficiales desde afines.json. Los íconos son dibujos propios en SVG (no son imágenes de terceros).
+import { getCollection, type CollectionEntry } from 'astro:content';
+import EncabezadoSeccion from './EncabezadoSeccion.astro';
+import Fuentes from './Fuentes.astro';
+import NotaEquipo from './NotaEquipo.astro';
+import { obtenerSeccion, porOrden } from '../lib/contenido';
+
+const seccion = await obtenerSeccion('sobre');
+const carreras: CollectionEntry<'afines'>[] = porOrden(await getCollection('afines'));
+
+// Cantidad de bloques de la barra: la duración de la carrera más larga.
+const maxSemestres: number = Math.max(...carreras.map((c) => c.data.duracionSemestres));
+const bloques: number[] = Array.from({ length: maxSemestres }, (_, i) => i + 1);
+
+// Trazos SVG de cada ícono (24x24): llaves de código, engranaje y gráfico de barras.
+type Icono = CollectionEntry<'afines'>['data']['icono'];
+const trazos: Record<Icono, string> = {
+	software: 'M8 7 3 12l5 5M16 7l5 5-5 5M14 4l-4 16',
+	sistemas:
+		'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1',
+	datos: 'M4 20V10M10 20V4M16 20v-7M22 20H2',
+};
+---
+
+<section id="sobre-la-carrera" aria-labelledby="titulo-sobre">
+	<div class="contenedor">
+		<EncabezadoSeccion seccion={seccion} idTitulo="titulo-sobre" mostrarNota={false} />
+
+		<ul class="carreras" aria-label="Comparación con carreras afines de la UTEM">
+			{
+				carreras.map(({ data }) => (
+					<li class:list={['tarjeta', { propia: data.propia }]} aria-labelledby={`carrera-${data.icono}`}>
+						{/* Fila 1: ícono, nombre y sello */}
+						<div class="cabecera">
+							<svg class="icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+								<path d={trazos[data.icono]} />
+							</svg>
+							<h3 id={`carrera-${data.icono}`}>{data.carrera}</h3>
+							{data.propia && <span class="sello">Esta carrera</span>}
+						</div>
+
+						{/* Fila 2: duración con un bloque por semestre */}
+						<div class="fila">
+							<p class="etiqueta">Duración</p>
+							<p class="duracion">{data.duracionSemestres} semestres</p>
+							{/* Bloques decorativos: el dato ya está escrito arriba, por eso se ocultan a lectores de pantalla. */}
+							<div class="semestres" aria-hidden="true" style={`--total: ${maxSemestres}`}>
+								{bloques.map((n) => (
+									<span class:list={{ lleno: n <= data.duracionSemestres }} />
+								))}
+							</div>
+						</div>
+
+						{/* Filas 3 a 5: título, grado y enfoque, con la misma etiqueta en todas las tarjetas */}
+						<div class="fila">
+							<p class="etiqueta">Título profesional</p>
+							<p class="valor">{data.titulo}</p>
+						</div>
+						<div class="fila">
+							<p class="etiqueta">Grado académico</p>
+							<p class="valor">{data.grado}</p>
+						</div>
+						<div class="fila">
+							<p class="etiqueta">Enfoque, según la fuente</p>
+							<p class="enfoque">{data.enfoque}</p>
+						</div>
+
+						{/* Fila 6: fuentes */}
+						<div class="pie-tarjeta">
+							<Fuentes fuentes={data.fuentes} />
+						</div>
+					</li>
+				))
+			}
+		</ul>
+
+		{seccion.data.notaEquipo && <NotaEquipo texto={seccion.data.notaEquipo} />}
+	</div>
+</section>
+
+<style>
+	.carreras {
+		list-style: none;
+		padding: 0;
+		margin: 2rem 0 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+		/* 6 filas compartidas por todas las tarjetas (ver subgrid más abajo). */
+		grid-auto-rows: auto;
+		gap: 0 1.25rem;
+	}
+
+	.tarjeta {
+		background: var(--fondo);
+		border: 1px solid var(--borde);
+		border-radius: 16px;
+		padding: 1.25rem;
+		margin-bottom: 1.25rem;
+		/* Cada tarjeta ocupa 6 filas y las comparte con sus vecinas: así "Título", "Grado" y
+		   "Enfoque" quedan a la misma altura en las tres tarjetas. */
+		display: grid;
+		grid-row: span 6;
+		grid-template-rows: subgrid;
+		row-gap: 0;
+	}
+
+	/* La carrera propia se destaca con borde celeste (color de la Facultad de Ingeniería). */
+	.tarjeta.propia {
+		border: 2px solid var(--celeste);
+		box-shadow: 0 10px 30px rgba(11, 35, 65, 0.12);
+	}
+
+	.cabecera {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		align-items: center;
+		gap: 0.25rem 0.8rem;
+		padding-bottom: 1rem;
+	}
+
+	.icono {
+		grid-row: span 2;
+		width: 3rem;
+		height: 3rem;
+		padding: 0.6rem;
+		border-radius: 12px;
+		background: var(--marino);
+		fill: none;
+		stroke: var(--celeste);
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.1rem;
+		line-height: 1.3;
+	}
+
+	.sello {
+		justify-self: start;
+		background: var(--celeste);
+		color: var(--marino);
+		font-weight: 800;
+		font-size: 0.75rem;
+		padding: 0.1rem 0.6rem;
+		border-radius: 999px;
+	}
+
+	/* Cada fila de datos va separada por una línea fina, como una tabla. */
+	.fila {
+		border-top: 1px solid var(--borde);
+		padding: 0.7rem 0;
+	}
+
+	.fila p {
+		margin: 0;
+	}
+
+	.etiqueta {
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: var(--suave);
+	}
+
+	.valor {
+		font-weight: 600;
+		margin-top: 0.15rem !important;
+	}
+
+	.duracion {
+		font-size: 1.35rem;
+		font-weight: 800;
+		color: var(--azul);
+	}
+
+	/* Un bloque por semestre: llenos en azul (celeste en la carrera propia), vacíos en gris claro. */
+	.semestres {
+		display: grid;
+		grid-template-columns: repeat(var(--total), 1fr);
+		gap: 3px;
+		margin-top: 0.4rem;
+	}
+
+	.semestres span {
+		height: 10px;
+		border-radius: 3px;
+		background: var(--fondo-alt);
+		border: 1px solid var(--borde);
+	}
+
+	.semestres span.lleno {
+		background: var(--azul);
+		border-color: var(--azul);
+	}
+
+	.propia .semestres span.lleno {
+		background: var(--celeste);
+		border-color: var(--celeste);
+	}
+
+	.enfoque {
+		font-style: italic;
+		margin-top: 0.15rem !important;
+	}
+
+	.pie-tarjeta {
+		align-self: end;
+	}
+</style>

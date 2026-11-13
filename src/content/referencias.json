@@ -1,9 +1,150 @@
 [
 	{
-		"id": "astro-docs",
-		"autor": "Astro",
-		"titulo": "Documentación oficial de Astro",
-		"anio": 2026,
-		"url": "https://docs.astro.build"
+		"id": "F16",
+		"autor": "Comisión Nacional de Acreditación",
+		"sigla": "CNA",
+		"fecha": "s.f.",
+		"titulo": "Búsqueda avanzada de acreditaciones",
+		"formato": "Base de datos",
+		"recuperado": "11 de noviembre de 2026",
+		"url": "https://www.cnachile.cl/Paginas/buscador-avanzado.aspx"
+	},
+	{
+		"id": "F18",
+		"autor": "Departamento de Evaluación, Medición y Registro Educacional",
+		"sigla": "DEMRE",
+		"fecha": "s.f.-a",
+		"titulo": "Calendario del Proceso de Admisión 2027",
+		"sitio": "Universidad de Chile",
+		"recuperado": "12 de noviembre de 2026",
+		"url": "https://demre.cl/calendario/calendario-proceso-2027"
+	},
+	{
+		"id": "F09",
+		"autor": "Departamento de Evaluación, Medición y Registro Educacional",
+		"sigla": "DEMRE",
+		"fecha": "s.f.-b",
+		"titulo": "PAES Regular",
+		"sitio": "Universidad de Chile",
+		"recuperado": "11 de noviembre de 2026",
+		"url": "https://demre.cl/paes"
+	},
+	{
+		"id": "F19",
+		"autor": "Departamento de Evaluación, Medición y Registro Educacional",
+		"sigla": "DEMRE",
+		"fecha": "2026, 24 de septiembre",
+		"titulo": "Oferta definitiva de carreras, vacantes y ponderaciones: Proceso de Admisión 2027",
+		"sitio": "Universidad de Chile",
+		"url": "https://demre.cl/publicaciones/pdf/2027-26-09-24-oferta-definitiva-carreras-p2027.pdf"
+	},
+	{
+		"id": "F04",
+		"autor": "Ministerio de Educación",
+		"sigla": "Mineduc",
+		"fecha": "s.f.-a",
+		"titulo": "Buscador de empleabilidad e ingresos",
+		"formato": "Base de datos",
+		"sitio": "Mi Futuro",
+		"recuperado": "12 de noviembre de 2026",
+		"url": "https://www.mifuturo.cl/buscador-de-empleabilidad-e-ingresos/"
+	},
+	{
+		"id": "F17",
+		"autor": "Ministerio de Educación",
+		"sigla": "Mineduc",
+		"fecha": "s.f.-b",
+		"titulo": "Metodología Buscador de Empleabilidad e Ingresos 2025-2026",
+		"sitio": "Mi Futuro",
+		"recuperado": "12 de noviembre de 2026",
+		"url": "https://www.mifuturo.cl/wp-content/uploads/2025/12/Metodologia-Buscador-Empleabilidad-e-Ingresos_2025-2026.pdf"
+	},
+	{
+		"id": "F05",
+		"autor": "Universidad Tecnológica Metropolitana",
+		"sigla": "UTEM",
+		"fecha": "s.f.-a",
+		"titulo": "Indicadores institucionales",
+		"recuperado": "12 de noviembre de 2026",
+		"url": "https://calidad.utem.cl/?p=259"
+	},
+	{
+		"id": "F20",
+		"autor": "Universidad Tecnológica Metropolitana",
+		"sigla": "UTEM",
+		"fecha": "s.f.-b",
+		"titulo": "Ingeniería Civil en Ciencia de Datos",
+		"recuperado": "12 de noviembre de 2026",
+		"url": "https://www.utem.cl/carreras/ingenieria-civil-en-ciencia-de-datos/"
+	},
+	{
+		"id": "F21",
+		"autor": "Universidad Tecnológica Metropolitana",
+		"sigla": "UTEM",
+		"fecha": "s.f.-c",
+		"titulo": "Ingeniería Civil en Computación mención Informática",
+		"recuperado": "12 de noviembre de 2026",
+		"url": "https://www.utem.cl/carreras/ingenieria-civil-en-computacion-mencion-informatica/"
+	},
+	{
+		"id": "F01",
+		"autor": "Universidad Tecnológica Metropolitana",
+		"sigla": "UTEM",
+		"fecha": "s.f.-d",
+		"titulo": "Ingeniería en Informática",
+		"recuperado": "12 de noviembre de 2026",
+		"url": "https://www.utem.cl/carreras/ingenieria-en-informatica/"
+	},
+	{
+		"id": "F22",
+		"autor": "Universidad Tecnológica Metropolitana",
+		"sigla": "UTEM",
+		"fecha": "s.f.-e",
+		"titulo": "Laboratorios Facultad de Ingeniería",
+		"sitio": "Dirección de Investigación",
+		"recuperado": "12 de noviembre de 2026",
+		"url": "https://investigacion.utem.cl/red-de-laboratorios/laboratorios-de-la-red/laboratorios-facultad-de-ingenieria/"
+	},
+	{
+		"id": "F10",
+		"autor": "Universidad Tecnológica Metropolitana",
+		"sigla": "UTEM",
+		"fecha": "s.f.-f",
+		"titulo": "Preguntas frecuentes",
+		"recuperado": "11 de noviembre de 2026",
+		"url": "https://www.utem.cl/admision/preguntas-frecuentes/"
+	},
+	{
+		"id": "F03",
+		"autor": "Universidad Tecnológica Metropolitana",
+		"sigla": "UTEM",
+		"fecha": "2022, 2 de agosto",
+		"titulo": "Resolución Exenta N.° 03102: Aprueba rediseño de la carrera de Ingeniería en Informática (21030), Plan Regular",
+		"url": "https://transparencia.utem.cl/27oe"
+	},
+	{
+		"id": "F07",
+		"autor": "Universidad Tecnológica Metropolitana",
+		"sigla": "UTEM",
+		"fecha": "2025",
+		"titulo": "Aranceles 2026",
+		"url": "https://transparencia.utem.cl/uoet"
+	},
+	{
+		"id": "F02",
+		"autor": "Universidad Tecnológica Metropolitana",
+		"sigla": "UTEM",
+		"fecha": "2026a",
+		"titulo": "Ingeniería en Informática",
+		"formato": "Folleto",
+		"url": "https://www.utem.cl/wp-content/uploads/2026/05/INGENIERIA_EN_INFORMATICA_UTEM.pdf"
+	},
+	{
+		"id": "F15",
+		"autor": "Universidad Tecnológica Metropolitana",
+		"sigla": "UTEM",
+		"fecha": "2026b",
+		"titulo": "Manual de identidad visual UTEM 2026",
+		"url": "https://www.utem.cl/wp-content/uploads/2026/07/MANUAL_UTEM_2026.pdf"
 	}
 ]

@@ -1,4 +1,10 @@
 ---
+// Layout base: concentra <head>, metadatos (SEO y Open Graph), estilos globales
+// y la estructura común (salto al contenido, encabezado, <main> y pie de página).
+import '../styles/global.css';
+import Encabezado from '../components/Encabezado.astro';
+import PiePagina from '../components/PiePagina.astro';
+
 interface Props {
 	title: string;
 	description: string;
@@ -26,50 +32,35 @@ const imageUrl: URL | undefined = image ? new URL(`${base}${image}`, Astro.site)
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<meta name="theme-color" content="#0b2341" />
 		<link rel="canonical" href={canonicalUrl} />
 		<link rel="sitemap" href={`${base}sitemap-index.xml`} />
 		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
-		<link rel="icon" href={`${base}favicon.ico`} />
+		<link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
 		<meta name="generator" content={Astro.generator} />
 
 		<!-- Open Graph (vista previa al compartir en redes sociales y mensajería) -->
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="es_CL" />
+		<meta property="og:site_name" content="Ingeniería en Informática UTEM · Proyecto académico" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalUrl} />
 		{imageUrl && <meta property="og:image" content={imageUrl} />}
+		{imageUrl && <meta property="og:image:width" content="1200" />}
+		{imageUrl && <meta property="og:image:height" content="630" />}
 		{imageUrl && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
 
 		<!-- Tarjeta para X/Twitter (usa los mismos datos de Open Graph) -->
 		<meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
 	</head>
 	<body>
-		<main>
+		<!-- Enlace para saltar el menú con el teclado (accesibilidad); solo se ve al recibir foco. -->
+		<a class="saltar" href="#contenido">Saltar al contenido</a>
+		<Encabezado />
+		<main id="contenido" tabindex="-1">
 			<slot />
 		</main>
+		<PiePagina />
 	</body>
 </html>
-
-<style is:global>
-	:root {
-		font-family: system-ui, sans-serif;
-		line-height: 1.6;
-		color: #1f2328;
-		background: #ffffff;
-	}
-
-	body {
-		margin: 0;
-	}
-
-	main {
-		max-width: 960px;
-		margin: 0 auto;
-		padding: 0 1rem;
-	}
-
-	section {
-		padding: 2rem 0;
-	}
-</style>

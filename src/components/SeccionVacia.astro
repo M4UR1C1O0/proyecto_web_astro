@@ -1,0 +1,21 @@
+---
+// Sección vacía que conserva solo su ancla (id), para que los enlaces del menú (#...) sigan funcionando.
+// Uso temporal: el equipo decidirá su contenido. El componente original y sus datos siguen en el
+// proyecto (ver los comentarios en src/pages/index.astro) y se pueden volver a mostrar en cualquier momento.
+interface Props {
+	/** id de la sección, el mismo que usa el menú (por ejemplo "plan-estudios"). */
+	id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<section id={id} class="vacia"></section>
+
+<style>
+	/* Sin contenido: no ocupa alto ni cambia el fondo alterno de las demás secciones. */
+	.vacia {
+		padding: 0;
+		background: none;
+	}
+</style>

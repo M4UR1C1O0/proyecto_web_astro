@@ -1,0 +1,41 @@
+---
+// Encabezado común de cada sección: pregunta que responde, título (h2), introducción,
+// fuentes de la introducción y, si existe, la interpretación del equipo.
+// Todos los textos vienen de src/content/secciones.json.
+import type { CollectionEntry } from 'astro:content';
+import Fuentes from './Fuentes.astro';
+import NotaEquipo from './NotaEquipo.astro';
+
+interface Props {
+	seccion: CollectionEntry<'secciones'>;
+	/** id del h2, usado por aria-labelledby en la etiqueta <section>. */
+	idTitulo: string;
+	/** Si es false, la nota del equipo no se muestra aquí (el componente la ubica en otro lugar). */
+	mostrarNota?: boolean;
+}
+
+const { seccion, idTitulo, mostrarNota = true } = Astro.props;
+const { titulo, pregunta, intro, fuentes, notaEquipo } = seccion.data;
+---
+
+<p class="pregunta">{pregunta}</p>
+<h2 id={idTitulo}>{titulo}</h2>
+{intro && <p class="intro">{intro}</p>}
+<Fuentes fuentes={fuentes} />
+{mostrarNota && notaEquipo && <NotaEquipo texto={notaEquipo} />}
+
+<style>
+	.pregunta {
+		margin: 0;
+		font-weight: 700;
+		color: var(--azul);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		font-size: 0.85rem;
+	}
+
+	.intro {
+		max-width: 46rem;
+		margin: 0.5rem 0 0;
+	}
+</style>

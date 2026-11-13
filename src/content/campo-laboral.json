@@ -1,17 +1,42 @@
 [
 	{
-		"id": "empresa-privada",
-		"titulo": "Empresa privada",
-		"descripcion": "Desarrollo y gestión de proyectos en empresas de distintos rubros."
+		"id": "ambitos",
+		"titulo": "Ámbitos",
+		"descripcion": "Académico universitario, comercial, industrial y de servicios, en la administración de la información y los recursos computacionales de cualquier organización.",
+		"fuentes": [
+			"F02"
+		]
 	},
 	{
-		"id": "sector-publico",
-		"titulo": "Sector público",
-		"descripcion": "Participación en organismos e instituciones del Estado."
+		"id": "direccion",
+		"titulo": "Dirección",
+		"descripcion": "Dirigir proyectos, equipos de desarrollo de software y la operación y soporte de redes de datos.",
+		"fuentes": [
+			"F02"
+		]
 	},
 	{
-		"id": "emprendimiento",
-		"titulo": "Emprendimiento",
-		"descripcion": "Creación de empresas y servicios propios."
+		"id": "planificacion",
+		"titulo": "Planificación",
+		"descripcion": "Planificar el desarrollo de sistemas de información y los procesos de transformación y adaptación a las nuevas tecnologías de la información.",
+		"fuentes": [
+			"F02"
+		]
+	},
+	{
+		"id": "solucion",
+		"titulo": "Solución de problemas",
+		"descripcion": "Aplicar metodologías para resolver problemas informáticos, considerando el crecimiento de los volúmenes de datos.",
+		"fuentes": [
+			"F02"
+		]
+	},
+	{
+		"id": "desarrollo",
+		"titulo": "Desarrollo",
+		"descripcion": "Desarrollar sistemas de información, soluciones algorítmicas, productos de software y redes de datos.",
+		"fuentes": [
+			"F02"
+		]
 	}
 ]

@@ -1,0 +1,43 @@
+[
+	{
+		"id": "informatica",
+		"carrera": "Ingeniería en Informática",
+		"titulo": "Ingeniera/o en Informática",
+		"grado": "Licenciada/o en Informática",
+		"duracionSemestres": 8,
+		"enfoque": "«Desarrollarás soluciones informáticas mediante metodologías, técnicas y herramientas vigentes»",
+		"fuentes": [
+			"F01",
+			"F02"
+		],
+		"propia": true,
+		"orden": 1,
+		"icono": "software"
+	},
+	{
+		"id": "civil-computacion",
+		"carrera": "Ingeniería Civil en Computación mención Informática",
+		"titulo": "Ingeniera/o Civil en Computación mención Informática",
+		"grado": "Licenciada/o en Ciencias de la Ingeniería",
+		"duracionSemestres": 11,
+		"enfoque": "«Desarrollarás habilidades en programación, diseño de sistemas y gestión de proyectos tecnológicos»",
+		"fuentes": [
+			"F21"
+		],
+		"orden": 2,
+		"icono": "sistemas"
+	},
+	{
+		"id": "civil-datos",
+		"carrera": "Ingeniería Civil en Ciencia de Datos",
+		"titulo": "Ingeniera/o Civil en Ciencia de Datos",
+		"grado": "Licenciada/o en Ciencias de la Ingeniería",
+		"duracionSemestres": 11,
+		"enfoque": "«Transformar grandes volúmenes de información en conocimiento»",
+		"fuentes": [
+			"F20"
+		],
+		"orden": 3,
+		"icono": "datos"
+	}
+]
