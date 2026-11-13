@@ -2,16 +2,15 @@
 // Página única del sitio. El orden de las secciones sigue la Fase C del informe,
 // basada en lo que el público pidió saber primero en la encuesta de la Fase B.
 //
-// TEMPORAL (decisión pendiente del equipo): "Campo laboral", "Plan de estudios" y "Preguntas frecuentes"
-// se muestran vacías, solo con su ancla (#campo-laboral, #plan-estudios, #faq).
-// Sus componentes (CampoLaboral, Malla, Faq) y sus datos en src/content/ siguen intactos.
+// TEMPORAL (decisión pendiente del equipo): "Campo laboral", "Plan de estudios", "Admisión" y
+// "Preguntas frecuentes" se muestran vacías, solo con su ancla (#campo-laboral, #plan-estudios, #admision, #faq).
+// Sus componentes (CampoLaboral, Malla, Admision, Faq) y sus datos en src/content/ siguen intactos.
 // Para volver a mostrarlas, reemplazar cada <SeccionVacia id="..."> por el componente comentado al lado.
-// Ojo: las tres son secciones obligatorias según la propuesta del proyecto (Fase C).
+// Ojo: las cuatro son secciones obligatorias según la propuesta del proyecto (Fase C).
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import SobreCarrera from '../components/SobreCarrera.astro';
 import PerfilEgreso from '../components/PerfilEgreso.astro';
-import Admision from '../components/Admision.astro';
 import Respaldo from '../components/Respaldo.astro';
 import Referencias from '../components/Referencias.astro';
 import LlamadoPostular from '../components/LlamadoPostular.astro';
@@ -29,7 +28,7 @@ import SeccionVacia from '../components/SeccionVacia.astro';
 	<PerfilEgreso />
 	<SeccionVacia id="campo-laboral" /><!-- <CampoLaboral /> -->
 	<SeccionVacia id="plan-estudios" /><!-- <Malla /> -->
-	<Admision />
+	<SeccionVacia id="admision" /><!-- <Admision /> -->
 	<SeccionVacia id="faq" /><!-- <Faq /> -->
 	<Respaldo />
 	<!-- Banda de llamado a postular, antes de las referencias y el pie. -->

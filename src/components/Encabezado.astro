@@ -1,6 +1,5 @@
 ---
 // Encabezado del sitio (inspirado en encabezados de landing pages educativas):
-//   - franja superior que aclara que es un proyecto académico (evita confundirlo con el sitio oficial);
 //   - logo institucional a la izquierda, sobre fondo blanco (regla 4.6 del manual F15);
 //   - menú por anclas con una entrada por sección (orden de la Fase C) y botón "Postula 2027".
 // "Referencias" se enlaza desde el pie de página.
@@ -25,10 +24,6 @@ const enlaces: Enlace[] = [
 ---
 
 <header class="encabezado">
-	<!-- Aviso dentro de <header> para que todo el contenido quede en una región (landmark) accesible. -->
-	<div class="aviso">
-		<p class="contenedor">Proyecto académico de estudiantes (EFE685, 2026). No es el sitio oficial de la UTEM.</p>
-	</div>
 	<div class="contenedor fila">
 		<a class="marca" href="#contenido" aria-label="Ir al inicio: Ingeniería en Informática UTEM">
 			<Logo />
@@ -49,17 +44,6 @@ const enlaces: Enlace[] = [
 </header>
 
 <style>
-	.aviso {
-		background: var(--marino);
-		color: #fff;
-		font-size: 0.8rem;
-	}
-
-	.aviso p {
-		margin: 0;
-		padding: 0.3rem 1rem;
-	}
-
 	.encabezado {
 		position: sticky;
 		top: 0;
